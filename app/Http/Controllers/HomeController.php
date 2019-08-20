@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\DiagnosisTitle;
+use App\Model\DiagnosisQuestion;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $titles = DiagnosisTitle::all();
+        return view('title', ["titles"=>$titles,]);
+    }
+
+    public function diagnosis($id)
+    {
+        $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->get();
+
+        return view('questions', ["questions"=>$questions, "question_count"=>count($questions),]);
     }
 }
