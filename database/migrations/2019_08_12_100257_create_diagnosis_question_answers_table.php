@@ -19,8 +19,10 @@ class CreateDiagnosisQuestionAnswersTable extends Migration
             $table->integer('diagnosis_question_id')->index();
             $table->integer('no');
             $table->string('answer');
-            $table->string('block');
-            $table->integer('value');
+            $table->integer('blockA_value');
+            $table->integer('blockB_value');
+            $table->integer('blockC_value');
+            $table->integer('blockD_value');
 
             $table->timestamps();
         });
