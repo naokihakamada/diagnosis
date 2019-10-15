@@ -12,20 +12,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @foreach ($titles as $title)
-                        <h2><a href="{{route('diagnosis',$title->alias)}}" type="button">{{$title->title}}</a></h2>
-                    @endforeach
-
-
-
+<h2>{{$result["type"]}}を相手とした際のコミュニケーションの注意点</h2>
+{!!$result["comm"]!!}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-</script>
-
 @endsection

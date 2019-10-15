@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-header">管理画面</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,19 +14,12 @@
                         </div>
                     @endif
 
-                    @foreach ($titles as $title)
-                        <h2><a href="{{route('diagnosis',$title->alias)}}" type="button">{{$title->title}}</a></h2>
-                    @endforeach
-
-
-
+                    <form method="post">
+                        <textarea id="mytextarea" name="mytextarea">Hello, World!</textarea>
+                      </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-</script>
-
 @endsection

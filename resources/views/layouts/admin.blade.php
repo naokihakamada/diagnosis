@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" ></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,17 +26,17 @@
         letter-spacing: .2em;
         text-aling: center;
       }
-
-
     </style>
 
-    <!-- bs-stepper 
-    <link rel="stylesheet" href="https://unpkg.com/bs-stepper/dist/css/bs-stepper.min.css">
-    <script src="https://unpkg.com/bs-stepper/dist/js/bs-stepper.min.js"></script>
-    -->
-
-    <script src="/js/js.cookie.js"></script>
-
+    <!-- tiny mce -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+          selector: '#mytextarea',
+          plugin: 'a_tinymce_plugin',
+  a_plugin_option: true,
+  a_configuration_option: 400        });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -97,6 +97,5 @@
             @yield('content')
         </main>
     </div>
-
 </body>
 </html>

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         [
             "title"=>"対人関係向上",
             "contents"=>"「ソーシャルスタイル理論」に基づく、コニュニケーションスタイルの傾向を測る診断です",
+            "alias"=>"shindan",
             "logic"=>"social-style-logic.0",
             "questions"=>[
                 ["他者から、「声が大きいね」と言われることがある","",["はい","","1","","1"],["いいえ","","","",""]],
@@ -198,6 +199,7 @@ class DatabaseSeeder extends Seeder
             $title->title = $diag["title"];
             $title->contents = $diag["contents"];
             $title->logic = $diag["logic"];
+            $title->alias = $diag['alias'];
             $title->save();
 
             $this->makeDiagnosisQuestion($i, $title->id);

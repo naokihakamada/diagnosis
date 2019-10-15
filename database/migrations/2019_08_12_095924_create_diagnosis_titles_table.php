@@ -17,6 +17,7 @@ class CreateDiagnosisTitlesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('title');
+            $table->string('alias');
             $table->text('contents');
             $table->string('logic');
 
