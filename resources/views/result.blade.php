@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+        function go_save(){
+            Cookies.set('diagnosis', "9");
+            alert('9');
+        }
+</script>
+    
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -12,7 +19,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+@if(!$user_result)
 <div>
     このページへのアクセスIDを送信します。<br />
     メールアドレスを入力してください。
@@ -35,15 +42,44 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-success">送信する</button>
+                    <button type="submit" class="btn btn-success" onclick="go_save()">送信する</button>
                 </div>
             </div>
     </form>
 </div>
 <br />
-<h2>あなたの診断結果は</h2>
+<h2>あなたのコミュニケーションスタイルは</h2>
+@else
+    @if($answer_check)
+<div><button class="float-right"><a href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果</a></button></div>
+    @else
+<div><button class="float-right"><a href="{{route('user_answer', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの回答</a></button></div>
+    @endif
+<h2>{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
+@endif
+
 <h3 style="text-align:center"><a href="#type{{$my_type}}">{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}</a></h3>
 <br />
+
+@if($answer_check)
+@php $question_count = count($questions); @endphp
+@foreach ($questions as $question)
+<div>
+    <h2>[{{$question->no}}/{{$question_count}}] - {{$question->title}}</h2>
+    <p>
+        <ul>
+        
+        @foreach ($question->answers() as $no=>$ans)
+            @if($ans->no == substr($user_record['answer'], $question->no-1, 1))
+            <li><h3>{{$ans->answer}}</h3></li>
+            @endif
+        @endforeach
+        </ul>
+    </p>
+</div>
+@endforeach
+
+@else
                     <table width="100%" height="100%" class="table table-striped">
                         <tr>
                             <td colspan="3" style="vertical-align: middle;text-align:center;">感情を<b>抑制・コントール</b>する傾向</td>
@@ -89,7 +125,7 @@
             <div>
                 <h3>{{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}　の特徴（傾向）</h3>
                 <div>{!!$result_contents[$key]["contents"]!!}</div>
-                <div><a href="{{route('comm',$key)}}">＜このタイプの人を相手とした際のコミュニケーションの注意点＞</a></div>
+                <div><a href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">＜このタイプの人を相手とした際のコミュニケーションの注意点＞</a></div>
             </div>
 
             @if($key==$my_type)
@@ -98,6 +134,7 @@
                 @endforeach
 
                 </div>
+@endif
             </div>
         </div>
     </div>
