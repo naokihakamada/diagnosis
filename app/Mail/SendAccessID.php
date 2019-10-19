@@ -11,14 +11,18 @@ class SendAccessID extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $user_result = null;
+    private $user_style = null;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($urec, $style)
     {
         //
+        $this->user_result = $urec;
+        $this->user_style = $style;
     }
 
     /**

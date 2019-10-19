@@ -24,6 +24,7 @@ class CreateUserResults extends Migration
             $table->integer('title_id');
             $table->string('alias');
             $table->string('answer')->nullable();
+            $table->string('my_type')->nullable();
 
             $table->timestamp('p1')->nullable();
             $table->timestamp('p2')->nullable();

@@ -30,7 +30,13 @@ Route::post("/communication/{alias}/{type}", function () {
     abort(404);
 });
 
-Route::get("/admin_", "AdminController@index");
+Route::get("/admin_", "AdminController@index")->name('admin_');
+Route::get("/admin_/titles", "AdminController@titles")->name('admin_titles');
+Route::get("/admin_/questions/{title_id}", "AdminController@questions")->name('admin_questions');
+Route::get("/admin_/types/{title_id}", "AdminController@types")->name("admin_types");
+
+Route::get("/admin_/logs", "AdminController@logs")->name('admin_logs');
+Route::post("/admin_/logs", "AdminController@log_action");
 
 Route::get('/save', function () {
     abort(404);

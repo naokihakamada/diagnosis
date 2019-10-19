@@ -10,6 +10,7 @@ use App\Model\DiagnosisResultType;
 use App\Model\UserResult;
 use Carbon\Carbon;
 use App\Mail\SendAccessID;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -45,40 +46,68 @@ class HomeController extends Controller
             abort(404);
         }
         $diag = $req->cookie('diagnosis');
+        //dd($diag, $req);
         //入力の再現（クッキーより)
         switch ($diag) {
+            case "1":
+                $set_req = array('title_id' => $id);
+                $ans = $req->cookie('answers');
+                for ($i=0;$i<strlen($ans);$i++) {
+                    $key = 'q-'.strval($i+1);
+                    $set_req += array($key => substr($ans, $i, 1));
+                }
+                $req->merge($set_req);
+                return $this->diagnosis_result($req);
+                break;
+            case "9":
+                //アクセスidへリダイレクト
+                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+                if (is_null($urec)) {
+                    Cookie::queue('diagnosis', "");
+                    $s_id = $req->session()->getId();
+                    $urec = UserResult::firstOrCreate(['session_id' => $s_id]);
+                    $urec->title_id = $id;
+                    $urec->alias =$alias;
+                    $urec->p1 = Carbon::now();
+                    $urec->save();
+                    Cookie::queue('user_result_id', $urec->id);
+                    break;
+                }
 
-        case "1":
-            $set_req = array('title_id' => $id);
-            $ans = $req->cookie('answers');
-            for ($i=0;$i<strlen($ans);$i++) {
-                $key = 'q-'.strval($i+1);
-                $set_req += array($key => substr($ans, $i, 1));
-            }
-            $req->merge($set_req);
-            return $this->diagnosis_result($req);
-            break;
-        case "9":
-            //アクセスidへリダイレクト
-            $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
-            if (is_null($urec)) {
-                abort(404);
-            }
-            return redirect()->route('user_result', ['access_id'=>$urec->access_id, 'alias'=>$alias, ]);
-            break;
-        default:
-            //まだ診断していない
-            //空認証レコード？
-            //session_id
-            $s_id = $req->session()->getId();
-            $urec = UserResult::firstOrCreate(['session_id' => $s_id, 'title_id'=> $id, 'alias'=>$alias, 'p1'=>Carbon::now()]);
-            Cookie::queue('user_result_id', $urec->id);
-            break;
+                return redirect()->route('user_result', ['access_id'=>$urec->access_id, 'alias'=>$alias, ]);
+                break;
+            case "-1":
+                //再診断
+                //user_resultの存在確認
+                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+                if (!is_null($urec)) {
+                    break;
+                }
+                Cookie::queue('diagnosis', "");
+                //user_resultがない場合には初期動作
+                // no break
+            default:
+                //まだ診断していない
+                //空認証レコード？
+                //session_id
+                $s_id = $req->session()->getId();
+                $urec = UserResult::firstOrCreate(['session_id' => $s_id]);
+                $urec->title_id = $id;
+                $urec->alias =$alias;
+                $urec->p1 = Carbon::now();
+                $urec->save();
+                Cookie::queue('user_result_id', $urec->id);
+                break;
         }
 
         $questions = $this->getQuestions(null, $id);
 
-        return view('questions', ["title_id"=>$id, "alias"=>$alias, "questions"=>$questions, "question_count"=>count($questions),]);
+        return view('questions', [
+            "title_id"=>$id,
+            "alias"=>$alias,
+            "questions"=>$questions,
+            "question_count"=>count($questions),
+        ]);
     }
 
     public function diagnosis_check(Request $req)
@@ -95,17 +124,30 @@ class HomeController extends Controller
         $s_id = $req->session()->getId();
         $urec = UserResult::where('session_id', $s_id)->first();
         if (is_null($urec)) {
-            abort(404);
+            if (!is_null($req->cookie('user_result_id'))) {
+                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+            }
+            if (is_null($urec)) {
+                abort(404);
+            }
         }
+
         //回答、チェック時間、
         $urec->answer = $req->cookie('answers');
         $urec->p2 = Carbon::now();
         $urec->save();
 
-        return view('questions_check', ["title_id"=>$id, "alias"=>$alias, "req"=>$req, "checks"=>$checks, "questions"=>$questions, "question_count"=>count($questions),]);
+        return view('questions_check', [
+            "title_id"=>$id,
+            "alias"=>$alias,
+            "req"=>$req,
+            "checks"=>$checks,
+            "questions"=>$questions,
+            "question_count"=>count($questions),
+        ]);
     }
 
-    public function diagnosis_result(Request $req, $bUserResult=false, $answer_check=false)
+    public function diagnosis_result(Request $req, $bUserResult=false, $answer_check=false, $user_record=null)
     {
         //結果判定
         $id = $req->input('title_id');
@@ -134,15 +176,25 @@ class HomeController extends Controller
         //結果発表
         $my_type = key($results);
 
-        //
-        $s_id = $req->session()->getId();
-        $urec = UserResult::where('session_id', $s_id)->first();
-        if (is_null($urec)) {
-            abort(404);
+        //はじめての診断結果
+        if (is_null($user_record)) {
+            $s_id = $req->session()->getId();
+            $urec = UserResult::where('session_id', $s_id)->first();
+            if (is_null($urec)) {
+                if (!is_null($req->cookie('user_result_id'))) {
+                    $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+                }
+                if (is_null($urec)) {
+                    abort(404);
+                }
+            }
+            //回答、チェック時間、
+            $urec->my_type = $my_type;
+            $urec->p3 = Carbon::now();
+            $urec->save();
+        } else {
+            $urec = $user_record;
         }
-        //回答、チェック時間、
-        $urec->p3 = Carbon::now();
-        $urec->save();
 
         //既にアクセスIDをもっている
         if (!is_null($urec->access_id)) {
@@ -157,7 +209,17 @@ class HomeController extends Controller
         }
 
         //$titles = DiagnosisTitle::all();
-        return view('result', ["title_id"=>$id, "alias"=>$alias, "questions"=>$questions, "results"=>$results,"my_type"=>$my_type, "result_contents"=>$result_contents, "user_record"=>$urec, "user_result"=>$bUserResult, "answer_check"=> $answer_check]);
+        return view('result', [
+            "title_id"=>$id,
+            "alias"=>$alias,
+            "questions"=>$questions,
+            "results"=>$results,
+            "my_type"=>$my_type,
+            "result_contents"=>$result_contents,
+            "user_record"=>$urec,
+            "user_result"=>$bUserResult,
+            "answer_check"=> $answer_check,
+        ]);
     }
 
     public function save(Request $req)
@@ -183,8 +245,11 @@ class HomeController extends Controller
         //
         $urec->save();
 
+        //診断結果データ
+        $styles = DiagnosisResultType::where('diagnosis_table_id', $urec->title_id)->where('style', $urec->my_type)->get()->toArray();
+
         //メール送信
-        Mail::to($urec->email)->send(new SendAccessID());
+        Mail::to($urec->email)->send(new SendAccessID($urec, $styles));
 
         //アクセスidへリダイレクト
         return redirect()->route('user_result', ['access_id'=>$access_id, 'alias'=>$alias, ]);
@@ -200,6 +265,13 @@ class HomeController extends Controller
         if ($urec->alias <> $alias) {
             abort(404);
         }
+        //再回答へ戻るには　回答(answer)をクリアする
+        if ($urec->answer == "") {
+            //クリア要請により再回答へ cookie を削除
+            Cookie::queue('diagnosis', "-1");
+            Cookie::queue('answers', "");
+            return redirect()->route('diagnosis', ['alias'=>$alias, ]);
+        }
 
         $set_req = array('title_id' => $urec->title_id, "alias"=>$alias);
         $ans = $urec->answer;
@@ -208,7 +280,7 @@ class HomeController extends Controller
             $set_req += array($key => substr($ans, $i, 1));
         }
         $req->merge($set_req);
-        return $this->diagnosis_result($req, true, $answer_check);
+        return $this->diagnosis_result($req, true, $answer_check, $urec);
     }
 
     public function user_answer($alias, $access_id, Request $req)
@@ -225,10 +297,17 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->limit(5)->get();
+        $limit=5;
+        if ($limit>0) {
+            $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->limit($limit)->get();
+        } else {
+            $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->get();
+        }
         if (is_null($questions)) {
             abort(404);
         }
+
+        //ランダムに取り出す
 
         return $questions;
     }
@@ -243,6 +322,9 @@ class HomeController extends Controller
             $result_contents[$s['style']] = $s;
         }
 
-        return view('comm', ["my_type"=>$type, "result_contents"=>$result_contents,]);
+        return view('comm', [
+            "my_type"=>$type,
+            "result_contents"=>$result_contents,
+        ]);
     }
 }

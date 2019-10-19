@@ -4,25 +4,24 @@
 <script>
         function go_save(){
             Cookies.set('diagnosis', "9");
-            alert('9');
         }
 </script>
     
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
 
-                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 @if(!$user_result)
-<div>
+<div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card alert alert-info">
+                <div class="card-body ">
+        <div>
     このページへのアクセスIDを送信します。<br />
-    メールアドレスを入力してください。
+    メールアドレスを入力してください。<br /><br />
     <form name="access_form" method="post" action="{{ route('save') }}">
         @csrf
         <input type="hidden" name="title_id" value="{{ $title_id }}">
@@ -47,9 +46,12 @@
             </div>
     </form>
 </div>
+</div></div></div></div>
 <br />
-<h2>あなたのコミュニケーションスタイルは</h2>
+<h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
+<br />
 @else
+<script>go_save();</script>
     @if($answer_check)
 <div><button class="float-right"><a href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果</a></button></div>
     @else
@@ -58,7 +60,7 @@
 <h2>{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
 @endif
 
-<h3 style="text-align:center"><a href="#type{{$my_type}}">{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}</a></h3>
+<h3 style="text-align:center"><a href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></h3>
 <br />
 
 @if($answer_check)
