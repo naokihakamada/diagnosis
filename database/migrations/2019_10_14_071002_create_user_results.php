@@ -21,8 +21,8 @@ class CreateUserResults extends Migration
             $table->string('access_id')->nullable();
             $table->string('session_id');
 
-            $table->integer('title_id');
-            $table->string('alias');
+            $table->integer('title_id')->nullable();
+            $table->string('alias')->nullable();
             $table->string('answer')->nullable();
             $table->string('my_type')->nullable();
 
