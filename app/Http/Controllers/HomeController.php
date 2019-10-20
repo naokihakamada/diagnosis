@@ -312,8 +312,19 @@ class HomeController extends Controller
         return $questions;
     }
 
-    public function diagnosis_comm($alias, $type)
+    public function diagnosis_comm($alias, $type, Request $req)
     {
+        //title_id,name,email
+        $s_id = $req->session()->getId();
+        $urec = UserResult::where('session_id', $s_id)->first();
+        if (is_null($urec)) {
+            //セッションが切れてしまった
+            $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+            if (is_null($urec)) {
+                abort(404);
+            }
+        }
+
         $titles = DiagnosisTitle::where("alias", '=', $alias)->first();
         //診断結果データ
         $styles = DiagnosisResultType::where('diagnosis_table_id', $titles->id)->get()->toArray();
@@ -324,6 +335,7 @@ class HomeController extends Controller
 
         return view('comm', [
             "my_type"=>$type,
+            "user_record"=>$urec,
             "result_contents"=>$result_contents,
         ]);
     }

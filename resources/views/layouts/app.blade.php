@@ -48,7 +48,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h1>{{ config('app.name', 'Laravel') }}</h1>
+                    <h1>ソーシャル</h1>
                 </a>
             </div>
         </nav>

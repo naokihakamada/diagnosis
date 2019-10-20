@@ -12,11 +12,14 @@
 <br /><hr />
                     <table class="table table-bordered">
                         <tr>
-                            <th rowspan="2" width="10%">タイプ</th>
+                            <th rowspan="3" width="10%">タイプ</th>
                             <th width="20%">名称</th>
                             <th width="20%">キーワード</th>
                             <th width="30%">カナ</th>
                             <th width="10%">アクション</th>
+                        </tr>
+                        <tr>
+                            <th colspan="4">カラー</th>
                         </tr>
                         <tr>
                             <th colspan="2">コンテンツ</th>
@@ -25,11 +28,16 @@
 
                         @foreach($types as $type)
                             <tr>
-                                <td rowspan="2">{{$type->style}}</td>
+                                <td rowspan="3">{{$type->style}}</td>
                                 <td>{{$type->type}}</td>
                                 <td>{{$type->name}}</td>
                                 <td>{{$type->kana}}</td>
                                 <td><a href="#" onclick="re_diagnosis({{$type->id}});">編集</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" bgcolor="{{$type->color}}">
+                                    {{$type->color}}
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2">{{$type->contents}}</td>

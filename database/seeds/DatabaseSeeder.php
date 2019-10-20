@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
     ];
 
     private $result_contents = [
-        "A" => ["type"=>"理論・分析型", "name"=>"Analytical", "kana"=>"アナリティカル",
+        "A" => ["type"=>"理論・分析型", "name"=>"Analytical", "kana"=>"アナリティカル", "color"=>"#B8E6F2",
             "contents"=>"
             <h4>感情：抑える<br />意見：受け止める</h4>
             <h5>[特徴]:思考派(論理的/計画的)</h5>
@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
             △:目下の友好・融和型<br />
             ✖ :目上の友好・融和型 / 目下の直感・直情型</p>
             "],
-        "B" => ["type"=>"行動・遂行型", "name"=>"Driving", "kana"=>"ドライビング",
+        "B" => ["type"=>"行動・遂行型", "name"=>"Driving", "kana"=>"ドライビング", "color"=>"#FBD773",
             "contents"=>"
             <h4>感情：抑える<br />意見：主張する</h4>
             <h5>[特徴]:行動派(現実的/成果主義)</h5>
@@ -181,7 +181,7 @@ class DatabaseSeeder extends Seeder
             ✖ :目下の友好・融和型 / 目上の直感・直情型</p>
             "],
     
-        "C" => ["type"=>"友好・融和型", "name"=>"Amiable", "kana"=>"エミアブル",
+        "C" => ["type"=>"友好・融和型", "name"=>"Amiable", "kana"=>"エミアブル", "color"=>"#D7FAC4",
             "contents"=>"
             <h4>感情：表す<br />意見：受け止める</h4>
             <h5>[特徴]:協調派(友好的/安定的)</h5>
@@ -225,7 +225,7 @@ class DatabaseSeeder extends Seeder
             ✖ :目上の行動・遂行型 / 目下の理論・分析型</p>
             "],
     
-        "D" => ["type"=>"直感・直情型", "name"=>"Expressive", "kana"=>"エスクプレッシブ",
+        "D" => ["type"=>"直感・直情型", "name"=>"Expressive", "kana"=>"エスクプレッシブ", "color"=>"#D17472",
             "contents"=>"
             <h4>感情：表す<br />意見：主張する</h4>
             <h5>[特徴]:感覚派(社交的/直感的)</h5>
@@ -313,6 +313,7 @@ class DatabaseSeeder extends Seeder
             $ty->type = $rcont['type'];
             $ty->name = $rcont['name'];
             $ty->kana = $rcont['kana'];
+            $ty->color = $rcont['color'];
             $ty->contents = $rcont['contents'];
             $ty->communication = $rcont['comm'];
 

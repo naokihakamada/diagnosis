@@ -21,6 +21,7 @@ class CreateDiagnosisResultTypes extends Migration
             $table->string('type');
             $table->string('name');
             $table->string('kana');
+            $table->string('color');
 
             $table->text('contents');
             $table->text('communication');
