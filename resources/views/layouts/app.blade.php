@@ -86,6 +86,7 @@ border-bottom:2px solid #444444;
     -->
 
     <script src="/js/js.cookie.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
 
 </head>
 <body>
