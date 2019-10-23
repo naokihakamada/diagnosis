@@ -49,6 +49,28 @@ class HomeController extends Controller
         //dd($diag, $req);
         //入力の再現（クッキーより)
         switch ($diag) {
+           case "9":
+                //アクセスidへリダイレクト
+                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+                if (is_null($urec)) {
+                    Cookie::queue('diagnosis', "", 300*24*60, "/");
+                    $s_id = $req->session()->getId();
+                    $urec = UserResult::firstOrCreate(['session_id' => $s_id]);
+                    $urec->title_id = $id;
+                    $urec->alias =$alias;
+                    $urec->p1 = Carbon::now();
+                    $urec->save();
+                    Cookie::queue('user_result_id', $urec->id, 300*24*60, "/");
+                    break;
+                }
+
+                if ($urec->access_id) {
+                    return redirect()->route('user_result', ['access_id'=>$urec->access_id, 'alias'=>$alias, ]);
+                    break;
+                }
+                //何らかのセッションデータが食い違った
+                Cookie::queue('diagnosis', "1", 300*24*60, "/");
+                // no break
             case "1":
                 $set_req = array('title_id' => $id, 'alias'=>$alias);
                 $ans = $req->cookie('answers');
@@ -59,31 +81,14 @@ class HomeController extends Controller
                 $req->merge($set_req);
                 return $this->diagnosis_result($req);
                 break;
-            case "9":
-                //アクセスidへリダイレクト
-                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
-                if (is_null($urec)) {
-                    Cookie::queue('diagnosis', "");
-                    $s_id = $req->session()->getId();
-                    $urec = UserResult::firstOrCreate(['session_id' => $s_id]);
-                    $urec->title_id = $id;
-                    $urec->alias =$alias;
-                    $urec->p1 = Carbon::now();
-                    $urec->save();
-                    Cookie::queue('user_result_id', $urec->id, 300*24*365);
-                    break;
-                }
-
-                return redirect()->route('user_result', ['access_id'=>$urec->access_id, 'alias'=>$alias, ]);
-                break;
-            case "-1":
+             case "-1":
                 //再診断
                 //user_resultの存在確認
                 $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
                 if (!is_null($urec)) {
                     break;
                 }
-                Cookie::queue('diagnosis', "");
+                Cookie::queue('diagnosis', "", 300*24*60, "/");
                 //user_resultがない場合には初期動作
                 // no break
             default:
@@ -96,7 +101,7 @@ class HomeController extends Controller
                 $urec->alias =$alias;
                 $urec->p1 = Carbon::now();
                 $urec->save();
-                Cookie::queue('user_result_id', $urec->id, 300*24*365);
+                Cookie::queue('user_result_id', $urec->id, 300*24*60, "/");
                 break;
         }
 
@@ -268,8 +273,8 @@ class HomeController extends Controller
         //再回答へ戻るには　回答(answer)をクリアする
         if ($urec->answer == "") {
             //クリア要請により再回答へ cookie を削除
-            Cookie::queue('diagnosis', "-1");
-            Cookie::queue('answers', "");
+            Cookie::queue('diagnosis', "-1", 300*24*60, "/");
+            Cookie::queue('answers', "", 300*24*60, "/");
             return redirect()->route('diagnosis', ['alias'=>$alias, ]);
         }
 
@@ -280,6 +285,7 @@ class HomeController extends Controller
             $set_req += array($key => substr($ans, $i, 1));
         }
         $req->merge($set_req);
+
         return $this->diagnosis_result($req, true, $answer_check, $urec);
     }
 

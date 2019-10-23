@@ -20,8 +20,8 @@
     $(document).ready( function(){
 
         if(!$.cookie('answers')){
-            $.cookie('diagnosis', '', {expires: 300});
-            @php echo "$.cookie('answers', '".str_repeat('0', $question_count)."', { expires: 365 });" @endphp
+            $.cookie('diagnosis', '', {expires: 300, path:"/"});
+            @php echo "$.cookie('answers', '".str_repeat('0', $question_count)."', { expires: 300, path:'/' });" @endphp
         }
 @if(0)
         // ページ読み込み時に実行したい処理
@@ -53,7 +53,7 @@
         answers = l + ans + r;
         console.log(answers);
         //Cookies.set('answers', answers, { expires: 365 });
-        $.cookie('answers', answers, {expires: 300});
+        $.cookie('answers', answers, {expires: 300, path:"/"});
 
         //次の質問へスクロール
         if(no < q_count){

@@ -3,7 +3,7 @@
 @section('content')
 <script>
     function go_result(){
-        $.cookie('diagnosis', '1', {expires: 300});
+        $.cookie('diagnosis', '1', {expires: 300, path:"/"});
 
         @if(0)
         Cookies.set('diagnosis', "1");

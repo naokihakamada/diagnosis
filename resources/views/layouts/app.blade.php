@@ -56,6 +56,13 @@ padding: 0.5em 0;/*上下の余白*/
   border-top: solid 2px #444444;/*上線*/
   border-bottom: solid 2px #444444;/*下線*/
 } 
+    p.send-title{
+        text-align:center;
+        padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 1px #38c172;/*上線*/
+  border-bottom: solid 1px #38c172;/*下線*/
+  margin-bottom: 2em;
+    }
     div.card-body h5{
         font-size:1.5em;
 color: black;
@@ -67,11 +74,20 @@ border-bottom:2px solid #444444;
     div.card-body p{
         font-size:1.2em;
         padding: 1.5em;
+        font-weight:500;
     }
 
     .table-bordered td.rc-block{
         border: 0px;
     }
+
+    a.type-non-anchor{
+        text-decoration: none;
+    }
+    a.type-non-anchor:visited { text-decoration: none;color: black;}
+    a.type-non-anchor:hover { text-decoration: none;color: black;}
+    a.type-non-anchor:active { text-decoration: none;color: black;}
+    a.type-non-anchor:link { text-decoration: none;color: black;}
 
 </style>
     <!-- CSS Files -->

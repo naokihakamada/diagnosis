@@ -3,8 +3,8 @@
 @section('content')
 <script>
         function go_save(){
-            $.cookie('diagnosis', '9', {expires: 300});
-            
+            $.cookie('diagnosis', '9', {expires: 300, path:"/"});
+
             @if(0)
             Cookies.set('diagnosis', "9");
             @endif
@@ -24,8 +24,10 @@
             <div class="card alert alert-info">
                 <div class="card-body ">
         <div>
-    このページへのアクセスIDを送信します。<br />
-    メールアドレスを入力してください。<br /><br />
+            <p class="send-title">
+    こちらのページへのアクセスIDを送信します。<br />
+    メールアドレスを入力してください。
+</p>
     <form name="access_form" method="post" action="{{ route('save') }}">
         @csrf
         <input type="hidden" name="title_id" value="{{ $title_id }}">
@@ -153,7 +155,7 @@
         <td width="50%" align="center" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif>
             <table width="70%"  bgcolor="{{$result_contents['A']["color"]}}" style="margin-top:1em;">
                 <tr>
-                    <td class="text-center rc-block" ><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></td>
+                    <td class="text-center rc-block" ><a class="type-non-anchor" href="#typeA"><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></a></td>
                 </tr>
                 <tr>
                     <td style="padding:0 1em;" class="text-right rc-block">{{$results["A"]}}</td>
@@ -163,7 +165,7 @@
         <td width="50%" align="center" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}" @endif>
             <table width="70%" bgcolor="{{$result_contents['B']["color"]}}" style="margin-top:1em">
                 <tr>
-                    <td class="text-center rc-block"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><a class="type-non-anchor" href="#typeB"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></a></td>
                 </tr>
                 <tr>
                     <td style="padding:0 1em" class="text-left rc-block">{{$results["B"]}}</td>
@@ -178,7 +180,7 @@
                     <td style="padding:0 1em" class="text-right rc-block">{{$results["C"]}}</td>
                 </tr>
                 <tr>
-                    <td class="text-center rc-block"><b>{{$result_contents["C"]["type"]}}<br />{{$result_contents["C"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><a class="type-non-anchor" href="#typeC"><b>{{$result_contents["C"]["type"]}}<br />{{$result_contents["C"]["name"]}}</b></a></td>
                 </tr>
             </table>
         </td>
@@ -188,7 +190,7 @@
                     <td style="padding:0 1em" class="text-left rc-block">{{$results["D"]}}</td>
                 </tr>
                 <tr>
-                    <td class="text-center rc-block"><b>{{$result_contents["D"]["type"]}}<br />{{$result_contents["D"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><a class="type-non-anchor" href="#typeD"><b>{{$result_contents["D"]["type"]}}<br />{{$result_contents["D"]["name"]}}</b></a></td>
                 </tr>
             </table>
         </td>
