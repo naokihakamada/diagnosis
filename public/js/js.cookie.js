@@ -56,6 +56,8 @@
 				alert('number');
 				alert(attributes.expires);
 				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}else{
+				alert('not number');
 			}
 
 			// We're using "expires" because "max-age" is not supported by IE
