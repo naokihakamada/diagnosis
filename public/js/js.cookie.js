@@ -53,6 +53,8 @@
 			}, api.defaults, attributes);
 
 			if (typeof attributes.expires === 'number') {
+				alert('number');
+				alert(attributes.expires);
 				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
 			}
 
