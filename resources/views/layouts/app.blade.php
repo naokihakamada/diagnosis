@@ -32,7 +32,7 @@
     }
 
     .ss-card-header{
-        padding: .75rem 1.25rem;
+        padding: 1.5em;
         margin-bottom: 0;
         background-color: #444444;
         border-bottom: 1px solid #444444;

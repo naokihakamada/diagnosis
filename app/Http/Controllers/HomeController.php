@@ -334,7 +334,8 @@ class HomeController extends Controller
         }
 
         return view('comm', [
-            "my_type"=>$type,
+            "comm_type"=>$type,
+            "my_type"=>$urec['my_type'],
             "alias"=>$alias,
             "user_record"=>$urec,
             "result_contents"=>$result_contents,
