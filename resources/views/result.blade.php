@@ -53,7 +53,7 @@
 <br />
 <br />
 
-@endif
+@else
 
 <script>go_save();</script>
 <div class="row justify-content-center">
@@ -73,12 +73,14 @@
         </div>
     </div>
 </div>
+
+@endif
 <!--- --->
 
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
+        <div class="ss-card card">
+            <div class="ss-card-header">
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
             @else
@@ -102,7 +104,7 @@
 @foreach ($questions as $question)
 <div class="row justify-content-center" style="margin-bottom:1em;">
     <div class="col-md-12">
-        <div class="card">
+        <div class="ss-card card">
                     <div class="card-body">
                             <h3 class="card-title">
                                     <table width="100%">
@@ -131,36 +133,36 @@
 <!--　タイプマトリックス -------------------------->
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="card">
+        <div class="ss-card card ">
             <div class="card-body float-none">
     
-<table width="100%" height="100%" class="table table-bordered">
+<table width="100%" height="100%" class="table table-bordered" style="margin-bottom:0">
     <tr>
-        <td colspan="3" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
+        <td colspan="3" class="rc-block" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
     </tr>
     <tr>
-        <td width="10%" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
-        <td width="80%">
+        <td width="10%" class="rc-block" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
+        <td width="80%" style="padding:0">
 
 <table width="100%" height="100%" bgcolor="white" style="border-style: none;">
     <tr>
         <td width="50%" align="center" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif>
-            <table width="70%"  bgcolor="{{$result_contents['A']["color"]}}" style="margin-top:1em">
+            <table width="70%"  bgcolor="{{$result_contents['A']["color"]}}" style="margin-top:1em;">
                 <tr>
-                    <td class="text-center"><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></td>
+                    <td class="text-center rc-block" ><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></td>
                 </tr>
                 <tr>
-                    <td style="padding:0 1em" class="text-right">{{$results["A"]}}</td>
+                    <td style="padding:0 1em;" class="text-right rc-block">{{$results["A"]}}</td>
                 </tr>
             </table>
         </td>
         <td width="50%" align="center" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}" @endif>
             <table width="70%" bgcolor="{{$result_contents['B']["color"]}}" style="margin-top:1em">
                 <tr>
-                    <td class="text-center"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></td>
                 </tr>
                 <tr>
-                    <td style="padding:0 1em" class="text-left">{{$results["B"]}}</td>
+                    <td style="padding:0 1em" class="text-left rc-block">{{$results["B"]}}</td>
                 </tr>
             </table>
         </td>
@@ -169,30 +171,30 @@
         <td width="50%" align="center" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}" @endif>
             <table width="70%" bgcolor="{{$result_contents['C']["color"]}}" style="margin-bottom:1em">
                 <tr>
-                    <td style="padding:0 1em" class="text-right">{{$results["C"]}}</td>
+                    <td style="padding:0 1em" class="text-right rc-block">{{$results["C"]}}</td>
                 </tr>
                 <tr>
-                    <td class="text-center"><b>{{$result_contents["C"]["type"]}}<br />{{$result_contents["C"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><b>{{$result_contents["C"]["type"]}}<br />{{$result_contents["C"]["name"]}}</b></td>
                 </tr>
             </table>
         </td>
         <td width="50%" align="center"  @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}" @endif>
             <table width="70%" bgcolor="{{$result_contents['D']["color"]}}" style="margin-bottom:1em">
                 <tr>
-                    <td style="padding:0 1em" class="text-left">{{$results["D"]}}</td>
+                    <td style="padding:0 1em" class="text-left rc-block">{{$results["D"]}}</td>
                 </tr>
                 <tr>
-                    <td class="text-center"><b>{{$result_contents["D"]["type"]}}<br />{{$result_contents["D"]["name"]}}</b></td>
+                    <td class="text-center rc-block"><b>{{$result_contents["D"]["type"]}}<br />{{$result_contents["D"]["name"]}}</b></td>
                 </tr>
             </table>
         </td>
     </tr>
 </table>
         </td>
-        <td width="10%" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
+        <td width="10%" class="rc-block" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
     </tr>
     <tr>
-        <td colspan="3" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>表現・主張</b>する傾向</td>
+        <td colspan="3" class="rc-block" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>表現・主張</b>する傾向</td>
     </tr>
 </table>
             </div>
@@ -204,10 +206,10 @@
 @foreach($results as $key=>$value)
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="card">
+        <div class="ss-card card">
             <a name="type{{$key}}"></a>
         
-            <div class="card-header" style="background-color:lightgray">
+            <div class="ss-card-header">
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
                         @if($key==$my_type)あなたのタイプ<br /><br />@endif
                         {{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}<br />の特徴（傾向）は
@@ -215,7 +217,7 @@
             </div>
 
             <div class="card-body float-none" style="background-color:{{$result_contents[$key]["color"]}}">
-                <p>{!!$result_contents[$key]["contents"]!!}</p>
+                {!!$result_contents[$key]["contents"]!!}
                 <div class="text-center"><a class="btn btn-info btn-lg active" href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">＜このタイプの人を相手とした際のコミュニケーションの注意点＞</a></div>
             </div>
         </div>

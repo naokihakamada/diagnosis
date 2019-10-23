@@ -18,15 +18,60 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
+<style>
     .vertical {
         writing-mode: tb-lr;
         writing-mode: vertical-lr;
         -webkit-writing-mode: vertical-lr;
         letter-spacing: .2em;
         text-aling: center;
-      }
+    }
 
+    .ss-card{
+        border:1px solid #444444;
+    }
+
+    .ss-card-header{
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #444444;
+        border-bottom: 1px solid #444444;
+
+        color: white;
+    }
+
+    .ss-card-header h2{
+        margin-bottom:0 ;
+    }
+
+    div.card-body h4{
+color: black;
+font-weight:700;
+padding-bottom: 0.5em;
+line-height:1.5em;
+text-align:center;
+font-size:2em;
+
+padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 2px #444444;/*上線*/
+  border-bottom: solid 2px #444444;/*下線*/
+} 
+    div.card-body h5{
+        font-size:1.5em;
+color: black;
+font-weight:700;
+margin-top: 1em;
+margin-bottom: 0.5em;
+border-bottom:2px solid #444444;
+    }
+    div.card-body p{
+        font-size:1.2em;
+        padding: 1.5em;
+    }
+
+    .table-bordered td.rc-block{
+        border: 0px;
+    }
 
 </style>
     <!-- CSS Files -->
