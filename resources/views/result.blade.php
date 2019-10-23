@@ -45,13 +45,15 @@
                 </div>
             </div>
     </form>
+        </div>
+                </div>
+            </div>
+        </div>
 </div>
-</div></div></div></div>
 <br />
-<h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
 <br />
 
-@else
+@endif
 
 <script>go_save();</script>
 <div class="row justify-content-center">
@@ -72,14 +74,18 @@
     </div>
 </div>
 <!--- --->
+
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h2 class="text-center align-middle" style="margin-bottom:0;">{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
+            @if(!$user_result)
+            <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
+            @else
+            <h2 class="text-center align-middle" style="margin-bottom:0;">{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
+            @endif
             </div>
             <div class="card-body float-none" style="background-color:{{$result_contents[$my_type]["color"]}};">
-@endif
 
 <h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><a href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></h3>
             </div>
