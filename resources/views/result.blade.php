@@ -3,7 +3,11 @@
 @section('content')
 <script>
         function go_save(){
+            $.cookie('diagnosis', '9', {expires: 300});
+            
+            @if(0)
             Cookies.set('diagnosis', "9");
+            @endif
         }
 </script>
     

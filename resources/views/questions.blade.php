@@ -18,6 +18,12 @@
 
     var answers="";
     $(document).ready( function(){
+
+        if(!$.cookie('answers')){
+            $.cookie('diagnosis', '', {expires: 300});
+            @php echo "$.cookie('answers', '".str_repeat('0', $question_count)."', { expires: 365 });" @endphp
+        }
+@if(0)
         // ページ読み込み時に実行したい処理
         var cookie = Cookies.get();
         if(!cookie['answers']){
@@ -28,6 +34,7 @@
         answers = Cookies.get('answers');
         console.log(answers);
         console.log(Cookies.get('diagnosis'));
+@endif
 
         //回答の再現
         for(i=0;i<answers.length;i++){
