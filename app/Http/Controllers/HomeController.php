@@ -50,7 +50,7 @@ class HomeController extends Controller
         //入力の再現（クッキーより)
         switch ($diag) {
             case "1":
-                $set_req = array('title_id' => $id, 'alias'=>$alisd);
+                $set_req = array('title_id' => $id, 'alias'=>$alias);
                 $ans = $req->cookie('answers');
                 for ($i=0;$i<strlen($ans);$i++) {
                     $key = 'q-'.strval($i+1);
