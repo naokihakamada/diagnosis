@@ -321,6 +321,7 @@ class HomeController extends Controller
             //セッションが切れてしまった
             $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
             if (is_null($urec)) {
+                dd($req);
                 abort(404);
             }
         }
