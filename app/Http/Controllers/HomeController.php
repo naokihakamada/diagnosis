@@ -50,7 +50,7 @@ class HomeController extends Controller
         //入力の再現（クッキーより)
         switch ($diag) {
             case "1":
-                $set_req = array('title_id' => $id);
+                $set_req = array('title_id' => $id, 'alias'=>$alisd);
                 $ans = $req->cookie('answers');
                 for ($i=0;$i<strlen($ans);$i++) {
                     $key = 'q-'.strval($i+1);
@@ -181,7 +181,6 @@ class HomeController extends Controller
             $s_id = $req->session()->getId();
             $urec = UserResult::where('session_id', $s_id)->first();
             if (is_null($urec)) {
-                dd($req);
                 if (!is_null($req->cookie('user_result_id'))) {
                     $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
                 }
