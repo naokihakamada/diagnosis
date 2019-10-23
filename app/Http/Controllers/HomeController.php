@@ -181,6 +181,7 @@ class HomeController extends Controller
             $s_id = $req->session()->getId();
             $urec = UserResult::where('session_id', $s_id)->first();
             if (is_null($urec)) {
+                dd($req);
                 if (!is_null($req->cookie('user_result_id'))) {
                     $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
                 }
@@ -321,7 +322,6 @@ class HomeController extends Controller
             //セッションが切れてしまった
             $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
             if (is_null($urec)) {
-                dd($req);
                 abort(404);
             }
         }
@@ -336,6 +336,7 @@ class HomeController extends Controller
 
         return view('comm', [
             "my_type"=>$type,
+            "alias"=>$alias,
             "user_record"=>$urec,
             "result_contents"=>$result_contents,
         ]);
