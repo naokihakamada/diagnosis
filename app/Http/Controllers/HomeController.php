@@ -70,7 +70,7 @@ class HomeController extends Controller
                     $urec->alias =$alias;
                     $urec->p1 = Carbon::now();
                     $urec->save();
-                    Cookie::queue('user_result_id', $urec->id);
+                    Cookie::queue('user_result_id', $urec->id, 300*24*365);
                     break;
                 }
 
@@ -96,7 +96,7 @@ class HomeController extends Controller
                 $urec->alias =$alias;
                 $urec->p1 = Carbon::now();
                 $urec->save();
-                Cookie::queue('user_result_id', $urec->id);
+                Cookie::queue('user_result_id', $urec->id, 300*24*365);
                 break;
         }
 
