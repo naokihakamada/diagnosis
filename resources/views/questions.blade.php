@@ -52,7 +52,8 @@
         var r = answers.substr(no);
         answers = l + ans + r;
         console.log(answers);
-        Cookies.set('answers', answers);
+        //Cookies.set('answers', answers, { expires: 365 });
+        $.cookie('answers', answers, {expires: 300});
 
         //次の質問へスクロール
         if(no < q_count){
