@@ -31,6 +31,15 @@
         border:1px solid #444444;
     }
 
+    .q-card-header{
+        padding: 0.2em 0.2em 0.2em 1.5em;
+        margin-bottom: 0;
+        background-color: #444444;
+        border-bottom: 1px solid #444444;
+
+        color: white;
+    }
+
     .ss-card-header{
         padding: 1.5em;
         margin-bottom: 0;
@@ -38,6 +47,16 @@
         border-bottom: 1px solid #444444;
 
         color: white;
+    }
+
+    .q-card-title{
+        color: black;
+font-weight:700;
+padding-bottom: 1.25em;
+line-height:1.25em;
+font-size:1.5em;
+
+text-align:center;
     }
 
     .ss-card-header h2{

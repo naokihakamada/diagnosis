@@ -77,16 +77,14 @@
         @foreach ($questions as $question)
         <div class="row justify-content-center" style="margin-bottom:1em;">
             <div class="col-md-12">
-            <div class="card">
+            <div class="ss-card card">
+                <div class="q-card-header">
+                        Q{{$question->no}}／{{$question_count}}
+                </div>
                 <div id="block-{{$question->no}}" class="card-body">
-                    <h3 class="card-title">
-                        <table width="100%">
-                            <tr>
-                                <td width="15%">Q{{$question->no}}／{{$question_count}}</td>
-                                <td>{{$question->title}}</td>
-                            </tr>
-                        </table>
-                    </h3>
+                    <div class="q-card-title">
+                        {{$question->title}}
+                    </div>
 <div style="text-align:center;">
             <div class="btn-group btn-group-toggle btn-group-justified" data-toggle="buttons">
                     @foreach ($question->answers() as $ans)
