@@ -27,25 +27,23 @@
                     @foreach ($questions as $question)
 <div class="row justify-content-center" style="margin-bottom:1em;">
     <div class="col-md-12">
-        <div class="card">
+        <div class=" ss-card card">
                     <input type="hidden" name="q-{{$question->no}}" value="{{$checks[$question->no]}}">
-                    <div class="card-body">
-                            <h3 class="card-title">
-                                    <table width="100%">
-                                        <tr>
-                                            <td width="15%">Q{{$question->no}}／{{$question_count}}</td>
-                                            <td width="70%">{{$question->title}}</td>
-                                            <td><p class="text-center">
+                    <div class="q-card-header">
+                            Q{{$question->no}}／{{$question_count}}
+                    </div>
+                    <div id="block-{{$question->no}}" class="card-body">
+                        <div class="q-card-title">
+                            {{$question->title}}
+                        </div>
+
+                                            <div class="text-center q-check-ans">
                                                 @foreach ($question->answers() as $no=>$ans)
                                                     @if($ans->no == $checks[$question->no])
                                                     {{$ans->answer}}
                                                     @endif
                                                 @endforeach
-                                            </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </h3>
+                                            </div>
                     </div>
 
         </div>

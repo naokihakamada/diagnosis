@@ -59,6 +59,14 @@ font-size:1.5em;
 text-align:center;
     }
 
+    .q-check-ans{
+        font-weight:700;
+line-height:1.25em;
+font-size:1.5em;
+
+text-align:center;
+    }
+
     .ss-card-header h2{
         margin-bottom:0 ;
     }
