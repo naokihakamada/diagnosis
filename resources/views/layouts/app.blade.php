@@ -51,7 +51,7 @@
 
     .q-card-title{
         color: black;
-font-weight:700;
+font-weight:500;
 padding-bottom: 1.25em;
 line-height:1.25em;
 font-size:1.5em;
