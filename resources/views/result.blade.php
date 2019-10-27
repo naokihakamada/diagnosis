@@ -34,14 +34,14 @@
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">お名前</label>
                 <div class="col-md-4">
-                        <input id="name" name="name" type="text" placeholder="例) 東京　花子" autocomplete="name" size="50" required>
+                        <input id="name" name="name" type="text" placeholder="例) 東京　花子" autocomplete="name" size="30" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">メールアドレス</label>
                 <div class="col-md-4">
-                        <input id="email" name="email" type="email" placeholder="例) taro@hanako.com" autocomplete="email" size="50" required>
+                        <input id="email" name="email" type="email" placeholder="例) taro@hanako.com" autocomplete="email" size="30" required>
                 </div>
             </div>
 
