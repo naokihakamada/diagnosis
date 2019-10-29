@@ -90,7 +90,7 @@
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
             @else
-            <h2 class="text-center align-middle" style="margin-bottom:0;"><mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは</h2>
+            <h2 class="text-center align-middle card-mark" style="margin-bottom:0;"><mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは</h2>
             @endif
             </div>
             <div class="card-body float-none" style="background-color:{{$result_contents[$my_type]["color"]}};">
@@ -225,7 +225,7 @@
             <div class="card-body float-none" style="background-color:{{$result_contents[$key]["color"]}}">
                 {!!$result_contents[$key]["contents"]!!}
                 <div class="text-center">
-                    <a class="btn btn-info btn-lg active blinking" style="background-color:" href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">＜このタイプの相手と接する時の注意点を見る＞</a></div>
+                    <a class="btn btn-info btn-lg active blinking" style="background-color:" href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">《このタイプの相手と接する時の注意点を見る》</a></div>
             </div>
         </div>
     </div>

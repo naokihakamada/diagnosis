@@ -16,7 +16,7 @@
     <div class="col-md-12">
         <div class="ss-card card">
             <div class="ss-card-header">
-                <h2 class="text-center align-middle" style="margin-bottom:0;">
+                <h2 class="text-center align-middle card-mark" style="margin-bottom:0;">
                     @if($user_record['name']=="")
                     あなたのコミュニケーションスタイルは
                     @else
@@ -36,7 +36,7 @@
     <div class="col-md-12">
         <div class="ss-card ccard">
             <div class="ss-card-header">
-                <h2 class="text-center align-middle" style="margin-bottom:0;">「{{$result_contents[$comm_type]['type']}} / {{$result_contents[$comm_type]["name"]}} / {{$result_contents[$comm_type]["kana"]}}」を<br />相手とした際のコミュニケーションの注意点</h2>
+                <h2 class="text-center align-middle card-mark" style="margin-bottom:0;"><mark>「{{$result_contents[$comm_type]['type']}} / {{$result_contents[$comm_type]["name"]}} / {{$result_contents[$comm_type]["kana"]}}」</mark>を<br />相手とした際のコミュニケーションの注意点</h2>
             </div>
             <div class="card-body" style="background-color:{{$result_contents[$comm_type]["color"]}};">
 {!!$result_contents[$my_type]["communication"]!!}

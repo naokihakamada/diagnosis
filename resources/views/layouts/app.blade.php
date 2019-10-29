@@ -166,6 +166,30 @@ border-bottom:2px solid #444444;
         line-height: 1.5em;
         text-align: center;
     }
+
+    .navbar-brand {
+        background: url("/images/comm-style.png") no-repeat left center;
+        background-size: contain;
+        height: 50px;
+        width: 250px;
+    }
+
+    /* ボタンに長いテキスト対応 */
+    .btn {
+        white-space: normal;
+    }
+
+    .card-mark{
+        line-height: 1.5em;
+    }
+
+    .table td, .table th {
+        padding: 1em 0.6em 1em 0.6em;
+    }
+
+    hr{
+        border-color: black;
+    }
 </style>
     <!-- CSS Files -->
     <!--
@@ -187,7 +211,6 @@ border-bottom:2px solid #444444;
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h1>コミュニケーションスタイル診断</h1>
                 </a>
             </div>
         </nav>
