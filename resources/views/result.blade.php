@@ -21,12 +21,12 @@
 @if(!$user_result)
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card alert alert-info">
+            <div class="ss-card card alert alert-info">
                 <div class="card-body ">
         <div>
             <p class="send-title">
-    こちらのページへのアクセスIDを送信します。<br />
-    メールアドレスを入力してください。
+    診断結果ページへのアクセスIDを送信します。<br />
+    お名前とメールアドレスを入力してください。
 </p>
     <form name="access_form" method="post" action="{{ route('save') }}">
         @csrf
@@ -62,17 +62,18 @@
 @else
 
 <script>go_save();</script>
+
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card" style="background-color:#f8fafc;border:0px">
-            <div class="card-body" style="padding-top:0;padding-right:0;padding-bottom:5px;">
+            <div class="card-body" style="padding-top:0;padding-right:0;padding-bottom:1em;">
 @if($answer_check)
                 <div>
-                    <button class="float-right"><a href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果</a></button>
+                    <div class="float-right"><a class="btn btn-outline-primary " href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果を見る</a></div>
                 </div>
 @else
                 <div>
-                    <button class="float-right"><a href="{{route('user_answer', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの回答</a></button>
+                    <div class="float-right"><a class="btn btn-outline-primary " href="{{route('user_answer', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの回答を見る</a></div>
                 </div>
 @endif
             </div>
@@ -80,7 +81,6 @@
     </div>
 </div>
 
-@endif
 <!--- --->
 
 <div class="row justify-content-center">
@@ -90,7 +90,7 @@
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
             @else
-            <h2 class="text-center align-middle" style="margin-bottom:0;">{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
+            <h2 class="text-center align-middle" style="margin-bottom:0;"><mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは</h2>
             @endif
             </div>
             <div class="card-body float-none" style="background-color:{{$result_contents[$my_type]["color"]}};">
@@ -110,31 +110,31 @@
 @foreach ($questions as $question)
 <div class="row justify-content-center" style="margin-bottom:1em;">
     <div class="col-md-12">
-        <div class="ss-card card">
-                    <div class="card-body">
-                            <h3 class="card-title">
-                                    <table width="100%">
-                                        <tr>
-                                            <td width="15%">Q{{$question->no}}／{{$question_count}}</td>
-                                            <td width="70%">{{$question->title}}</td>
-                                            <td><p class="text-center">
-                                                @foreach ($question->answers() as $no=>$ans)
+        <div class=" ss-card card">
+                    <div class="q-card-header">
+                            Q{{$question->no}}／{{$question_count}}
+                    </div>
+                    <div id="block-{{$question->no}}" class="card-body">
+                        <div class="q-card-title">
+                            {{$question->title}}
+                        </div>
+
+                                            <div class="text-center q-check-ans">
+                                                    @foreach ($question->answers() as $no=>$ans)
                                                     @if($ans->no == substr($user_record['answer'], $question->no-1, 1))
-                                                    {{$ans->answer}}
+                                                    <label class="btn active btn-outline-primary">{{$ans->answer}}</label>
                                                     @endif
                                                 @endforeach
-                                            </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </h3>
+                                            </div>
                     </div>
 
         </div>
     </div>
 </div>
-                    @endforeach
+@endforeach
 <!-------------------------->
+
+
 @else
 <!--　タイプマトリックス -------------------------->
 <div class="row justify-content-center">
@@ -218,28 +218,49 @@
             <div class="ss-card-header">
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
                         @if($key==$my_type)あなたのタイプ<br /><br />@endif
-                        {{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}<br />の特徴（傾向）は
+                        <mark>{{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}</mark><br /><br />の特徴（傾向）は
                 </h2>
             </div>
 
             <div class="card-body float-none" style="background-color:{{$result_contents[$key]["color"]}}">
                 {!!$result_contents[$key]["contents"]!!}
-                <div class="text-center"><a class="btn btn-info btn-lg active" href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">＜このタイプの人を相手とした際のコミュニケーションの注意点＞</a></div>
+                <div class="text-center">
+                    <a class="btn btn-info btn-lg active blinking" style="background-color:" href="{{route('comm',['type'=>$key, 'alias'=>$alias,])}}">＜このタイプの相手と接する時の注意点を見る＞</a></div>
             </div>
         </div>
     </div>
 </div>
 <br />
 @if($key==$my_type)
-<hr /><h2 class="text-center">以下は他のタイプの特徴になります。参考にしてください</h2><hr />
+<hr /><h2 class="text-center">以下は他のタイプの特徴になります。<br />参考にしてください</h2><hr />
 @endif
 <br />
 @endforeach
 
-                </div>
 @endif
+
+    <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card" style="background-color:#f8fafc;border:0px">
+                    <div class="card-body" style="padding-top:0;padding-right:0;padding-bottom:5px;">
+        @if($answer_check)
+                        <div>
+                            <div class="float-right"><a class="btn btn-outline-primary " href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果を見る</a></div>
+                        </div>
+        @else
+                        <div>
+                            <div class="float-right"><a class="btn btn-outline-primary " href="{{route('user_answer', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの回答を見る</a></div>
+                        </div>
+        @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+@endif
+</div>
+</div>
+</div>
+</div>
+
 </div>
 @endsection

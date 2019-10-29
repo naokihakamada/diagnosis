@@ -27,6 +27,22 @@
         text-aling: center;
     }
 
+    .top-paragraph{
+        margin-bottom: 2em;
+        line-height:1.75em;
+        font-size:1.25em;
+    }
+    .top-main{
+        font-weight:700;
+    }
+    .go-diagnosis{
+        text-align: center;
+    }
+    .go-diagnosis a{
+        padding: 0.25em 0.5em;
+        font-size: 0.75em;
+    }
+
     .ss-card{
         border:1px solid #444444;
     }
@@ -55,6 +71,16 @@ font-weight:500;
 padding-bottom: 1.25em;
 line-height:1.25em;
 font-size:1.5em;
+
+text-align:center;
+    }
+
+    .q-card-end{
+        color: black;
+font-weight:500;
+padding-bottom: 1em;
+line-height:1em;
+font-size:1.25em;
 
 text-align:center;
     }
@@ -116,6 +142,30 @@ border-bottom:2px solid #444444;
     a.type-non-anchor:active { text-decoration: none;color: black;}
     a.type-non-anchor:link { text-decoration: none;color: black;}
 
+    .blinking{
+    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+    border-color: red;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0.2;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0.2;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0.2;}
+    100% {opacity:1;}
+}
+
+    .action-button{
+        font-size: 1.5em;
+        line-height: 1.5em;
+        text-align: center;
+    }
 </style>
     <!-- CSS Files -->
     <!--
@@ -137,7 +187,7 @@ border-bottom:2px solid #444444;
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h1>ソーシャル</h1>
+                    <h1>コミュニケーションスタイル診断</h1>
                 </a>
             </div>
         </nav>

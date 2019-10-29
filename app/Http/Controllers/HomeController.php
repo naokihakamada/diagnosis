@@ -154,6 +154,7 @@ class HomeController extends Controller
 
     public function diagnosis_result(Request $req, $bUserResult=false, $answer_check=false, $user_record=null)
     {
+        $this->diagnosis_check($req);
         //結果判定
         $id = $req->input('title_id');
         $alias = $req->input('alias');

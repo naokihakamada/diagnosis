@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card" style="background-color:#f8fafc;border:0px">
                 <div class="card-body" style="padding-top:0;padding-right:0;padding-bottom:5px;">
-                    <div><button class="float-right"><a href="javascript:history.back()">戻る</a></button></div>
+                    <div class="float-right"><a class="btn btn-outline-primary " href="javascript:history.back()">戻る</a></div>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                     @if($user_record['name']=="")
                     あなたのコミュニケーションスタイルは
                     @else
-                    {{$user_record['name']}}さん のコミュニケーションスタイルは
+                    <mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは
                     @endif
                 </h2>
             </div>
@@ -49,7 +49,7 @@
     <div class="col-md-12">
         <div class="card" style="background-color:#f8fafc;border:0px">
             <div class="card-body" style="padding-top:5px;padding-right:0;padding-bottom:5px;">
-                <div><button class="float-right"><a href="javascript:history.back()">戻る</a></button></div>
+                    <div class="float-right"><a class="btn btn-outline-primary " href="javascript:history.back()">戻る</a></div>
             </div>
         </div>
     </div>

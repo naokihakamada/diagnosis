@@ -13,6 +13,7 @@
             }
         }
 
+        $.cookie('diagnosis', '1', {expires: 300, path:"/"});
         document.answer_form.submit();
     }
 
@@ -69,7 +70,7 @@
         </div>
     @endif
 
-    <form name="answer_form" action="{{route('check')}}" method="post">
+    <form name="answer_form" action="{{route('result')}}" method="post">
             {{ csrf_field() }}
         <input type="hidden" name="title_id" value="{{$title_id}}">
         <input type="hidden" name="alias" value="{{$alias}}">
@@ -94,7 +95,7 @@
                     </label>
                     @endforeach
             </div>
-</div>
+        </div> 
 
                 </div>
             </div>
@@ -102,7 +103,16 @@
         </div>
         @endforeach
 
-        <input type="button" value="診断結果へ" onclick="check_input()" />
+        <div class="row justify-content-center" style="margin-bottom:1em;">
+                <div class="col-md-12">
+                <div class=" card">
+                    <div class="card-body text-center">
+                        <div class="q-card-end">回答お疲れさまでした</div>
+            <input class="btn btn-outline-primary action-button" type="button" value="診断結果を見る" onclick="check_input()" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 @endsection
