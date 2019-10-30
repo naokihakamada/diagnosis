@@ -147,7 +147,7 @@
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
     </tr>
     <tr>
-        <td width="10%" class="rc-block @php if(in_array($my_type,array('C','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
+        <td width="10%" class="rc-block @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
         <td width="80%" style="padding:0">
 
 <table width="100%" height="100%" bgcolor="white" style="border-style: none;">
@@ -197,7 +197,7 @@
     </tr>
 </table>
         </td>
-        <td width="10%" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
+        <td width="10%" class="rc-block @php if(in_array($my_type,array('B','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
     </tr>
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('C','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>表現・主張</b>する傾向</td>
