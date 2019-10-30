@@ -260,6 +260,9 @@ class HomeController extends Controller
 
         //メール送信
         Mail::to($urec->email)->send(new SendAccessID($urec, $result_contents));
+        if (Mail::failures()) {
+            dd(Mail);
+        }
 
         //アクセスidへリダイレクト
         return redirect()->route('user_result', ['access_id'=>$access_id, 'alias'=>$alias, ]);

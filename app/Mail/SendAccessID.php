@@ -27,7 +27,7 @@ class SendAccessID extends Mailable
         //
         $this->from = array([
             "address" => "info@ecm-training.com",
-            "name" => "コミュニケーションスタイル診断 大村 亮介"
+            "name" => "コミュニケーションスタイル診断"
         ]);
 
         //
@@ -37,7 +37,7 @@ class SendAccessID extends Mailable
         ]);
 
         //
-        $this->subject = "[コミュニケーション診断] <".$urec->name.">様の診断結果へのアクセス情報をお送りいたします。";
+        $this->subject = "[コミュニケーションスタイル診断] <".$urec->name.">様の診断結果へのアクセス情報をお送りいたします。";
     }
 
     /**
