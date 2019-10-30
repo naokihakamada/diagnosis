@@ -43,6 +43,9 @@ Route::get('/save', function () {
 });
 Route::post('/save', "HomeController@save")->name('save');
 
+Route::get('/data_clear', "HomeController@data_clear")->name('clear');
+Route::post('/data_clear', "HomeController@data_cleared");
+
 Route::get("/{alias}", "HomeController@diagnosis")->name("diagnosis");
 Route::post('/{alias}', function () {
     abort(404);

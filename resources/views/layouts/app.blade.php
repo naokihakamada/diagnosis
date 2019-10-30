@@ -202,7 +202,6 @@ border-bottom:2px solid #444444;
     <script src="https://unpkg.com/bs-stepper/dist/js/bs-stepper.min.js"></script>
     -->
 
-    <script src="/js/js.cookie.js"></script>
     <script src="/js/jquery.cookie.js"></script>
 
 </head>

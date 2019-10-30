@@ -355,4 +355,18 @@ class HomeController extends Controller
             "result_contents"=>$result_contents,
         ]);
     }
+
+    public function data_clear(Request $req)
+    {
+        return view("data_clear");
+    }
+    public function data_cleared(Request $req)
+    {
+        if ($req->input('pass') == "ecm-training_") {
+            return view("data_cleaned");
+            return redirect()->route('index');
+        }
+
+        abort(404);
+    }
 }
