@@ -74,8 +74,9 @@
     <div class="row justify-content-center" style="margin-bottom:1em;">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body q-card-title alert-info" >
-                設問を読んで「直感」で判断し、回答を選択してください。
+                <div class="card-body q-card-title alert-info  bg-white" >
+                設問を読んで「直感」で判断し、回答を選択してください。<br /><br />
+                <mark>設問は全部で{{$question_count}}問ございます。</mark>
                 </div>
             </div>
         </div>
@@ -88,16 +89,16 @@
 
         @foreach ($questions as $question)
         <div id="block-{{$question->no}}" >
-            @if (in_array($question->no, array(intval($question_count-10), intval($question_count/2))))
+            @if (($question->no % 10 == 0) && ($question->no != $question_count))
 <div class="row justify-content-center" style="margin-bottom:1em;">
     <div class="col-md-12">
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body q-card-title alert-info" >
 残り
 @if ($question->no == intval($question_count/2))
-半分(@php echo intval($question_count/2); @endphp問)
+半分（@php echo intval($question_count/2); @endphp 問）
 @else
-10問
+（@php echo ($question_count - $question->no); @endphp 問）
 @endif
 です
             </div>
@@ -108,7 +109,7 @@
         </div>
         <div class="row justify-content-center" style="margin-bottom:1em;">
             <div class="col-md-12">
-            <div class="ss-card card">
+            <div class="ss-card card shadow-lg">
                 <div class="q-card-header">
                         Q{{$question->no}}／{{$question_count}}
                 </div>

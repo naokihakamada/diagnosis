@@ -19,10 +19,35 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <style>
+    body{
+        background-color: #dae0e5;
+    }
+    body {
+background-image: linear-gradient(
+	-45deg,
+	#ced4da 25%,
+	#f8f9fa 25%,
+	#f8f9fa 50%,
+	#ced4da 50%,
+	#ced4da 75%,
+	#f8f9fa 75%,
+	#f8f9fa	
+);
+background-size: 5px 5px;
+background-attachment: fixed;
+}    
+    .body-bg{
+        /*background-color: #dae0e5;*/
+        background-color: transparent;
+        border: 0px;
+    }
+    .bg-white{
+        background-color: white;
+    }
     .vertical {
-        writing-mode: tb-lr;
-        writing-mode: vertical-lr;
-        -webkit-writing-mode: vertical-lr;
+        writing-mode: vertical-rl;
+        -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
         letter-spacing: .2em;
         text-aling: center;
     }
@@ -44,25 +69,30 @@
     }
 
     .ss-card{
-        border:1px solid #444444;
+        /*border:1px solid #444444;*/
+        padding: 0.5em;
+
+        border-radius: 0.75rem;
     }
 
     .q-card-header{
-        padding: 0.2em 0.2em 0.2em 1.5em;
+        padding: 0.4em 0.4em 0.4em 1.5em;
         margin-bottom: 0;
         background-color: #444444;
         border-bottom: 1px solid #444444;
 
         color: white;
+        border-radius: 0.75rem;
     }
 
     .ss-card-header{
         padding: 1.5em;
         margin-bottom: 0;
         background-color: #444444;
-        border-bottom: 1px solid #444444;
+        /*border-bottom: 1px solid #444444;*/
 
         color: white;
+        border-radius: 0.75rem;
     }
 
     .q-card-title{
