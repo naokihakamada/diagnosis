@@ -24,6 +24,7 @@
             $.cookie('diagnosis', '', {expires: 300, path:"/"});
             @php echo "$.cookie('answers', '".str_repeat('0', $question_count)."', { expires: 300, path:'/' });" @endphp
         }
+        answers = $.cookie('answers');
 @if(0)
         // ページ読み込み時に実行したい処理
         var cookie = Cookies.get();
@@ -52,7 +53,7 @@
         var l = answers.substr(0,no-1);
         var r = answers.substr(no);
         answers = l + ans + r;
-        console.log(answers);
+        //console.log(answers);
         //Cookies.set('answers', answers, { expires: 365 });
         $.cookie('answers', answers, {expires: 300, path:"/"});
 
@@ -70,19 +71,30 @@
         </div>
     @endif
 
+    <div class="row justify-content-center" style="margin-bottom:1em;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body q-card-title alert-info" >
+                設問を読んで「直感」で判断し、回答を選択してください。
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form name="answer_form" action="{{route('result')}}" method="post">
             {{ csrf_field() }}
         <input type="hidden" name="title_id" value="{{$title_id}}">
         <input type="hidden" name="alias" value="{{$alias}}">
 
         @foreach ($questions as $question)
+        <div id="block-{{$question->no}}" ></div>
         <div class="row justify-content-center" style="margin-bottom:1em;">
             <div class="col-md-12">
             <div class="ss-card card">
                 <div class="q-card-header">
                         Q{{$question->no}}／{{$question_count}}
                 </div>
-                <div id="block-{{$question->no}}" class="card-body">
+                <div class="card-body">
                     <div class="q-card-title">
                         {{$question->title}}
                     </div>
