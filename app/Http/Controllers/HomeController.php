@@ -363,6 +363,10 @@ class HomeController extends Controller
     public function data_cleared(Request $req)
     {
         if ($req->input('pass') == "ecm-training_") {
+            setcookie('answers', "", time()-60);
+            setcookie('diagnosis', "", time()-60);
+            setcookie('user_result_id', "", time()-60);
+        
             return view("data_cleaned");
             return redirect()->route('index');
         }
