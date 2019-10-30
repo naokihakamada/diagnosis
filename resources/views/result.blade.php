@@ -150,10 +150,10 @@
         <td width="10%" class="rc-block @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
         <td width="80%" style="padding:0">
 
-<table width="100%" height="100%" bgcolor="white" style="border-style: none;">
+<table width="100%" height="100%" bgcolor="white" style="border-style: none;border:0px;">
     <tr>
-        <td width="50%" align="center" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" class="shadow-lgb blinking" @endif>
-            <table width="70%" bgcolor="{{$result_contents['A']["color"]}}" style="margin-top:1em;">
+        <td width="50%" align="center" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" class="shadow-lg " @endif>
+            <table width="70%" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif style="margin-top:1em;">
                 <tr>
                     <td class="text-center rc-block" ><a class="type-non-anchor" href="#typeA"><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></a></td>
                 </tr>
@@ -162,8 +162,8 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}" class="shadow-lg blinking" @endif>
-            <table width="70%" bgcolor="{{$result_contents['B']["color"]}}" style="margin-top:1em">
+        <td width="50%" align="center" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}" class="shadow-lg " @endif>
+            <table width="70%" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}"@endif style="margin-top:1em">
                 <tr>
                     <td class="text-center rc-block"><a class="type-non-anchor" href="#typeB"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></a></td>
                 </tr>
@@ -174,8 +174,8 @@
         </td>
     </tr>
     <tr>
-        <td width="50%" align="center" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}" class="shadow-lg" @endif>
-            <table width="70%" bgcolor="{{$result_contents['C']["color"]}}" style="margin-bottom:1em">
+        <td width="50%" align="center" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}" class="shadow-lg " @endif>
+            <table width="70%" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}"@endif style="margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-right rc-block">{{$results["C"]}}</td>
                 </tr>
@@ -184,8 +184,8 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center"  @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}" class="shadow-lg" @endif>
-            <table width="70%" bgcolor="{{$result_contents['D']["color"]}}" style="margin-bottom:1em">
+        <td width="50%" align="center"  @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}" class="shadow-lg " @endif>
+            <table width="70%" @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}"@endif style="margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-left rc-block">{{$results["D"]}}</td>
                 </tr>
@@ -232,9 +232,8 @@
 </div>
 <br />
 @if($key==$my_type)
-<hr /><h2 class="text-center">以下は他のタイプの特徴になります。<br />参考にしてください</h2><hr />
+<hr /><h2 class="text-center">以下は他のタイプの特徴になります。<br />参考にしてください</h2><hr /><br />
 @endif
-<br />
 @endforeach
 
 @endif
@@ -242,7 +241,7 @@
     <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card body-bg">
-                    <div class="card-body body-bg" style1="padding-top:0;padding-right:0;padding-bottom:5px;">
+                    <div class="card-body body-bg" style="padding-top:0;padding-right:0;padding-bottom:5px;">
         @if($answer_check)
                         <div>
                             <div class="float-right"><a class="btn btn-outline-primary bg-white" href="{{route('user_result', ['alias'=>$user_record['alias'], 'access_id'=>$user_record['access_id']])}}">あなたの診断結果を見る</a></div>

@@ -215,11 +215,44 @@ border-bottom:2px solid #444444;
 
     .table td, .table th {
         padding: 1em 0.6em 1em 0.6em;
+        border: 0px;
     }
 
     hr{
         border-color: black;
     }
+
+table{
+  margin:0 auto;
+  border-radius:10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-spacing: 0;
+  overflow:hidden;
+  border-style: none;
+}
+td,th{
+    border-style: none;
+    }
+td,th{
+  padding:10px;
+}
+th{
+    border-style: none;
+}
+table tbody tr:last-child th,
+table tbody tr:last-child td{
+  border-bottom: none;
+  border-style: none;
+}
+th + th,td{
+    border-style: none;
+}
+
+.table-bordered{
+    border: 0px;
+}
+
 </style>
     <!-- CSS Files -->
     <!--
