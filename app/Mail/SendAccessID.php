@@ -26,7 +26,7 @@ class SendAccessID extends Mailable
 
         //
         $this->from = array([
-            "address" => "info@ecm-training.com",
+            "address" => "info@ecm-training.hakamada.me",//"info@ecm-training.com",
             "name" => "コミュニケーションスタイル診断"
         ]);
 
