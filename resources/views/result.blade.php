@@ -21,7 +21,7 @@
 @if(!$user_result)
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="ss-card card alert alert-info">
+            <div class="ss-card card alert alert-info shadow">
                 <div class="card-body ">
         <div>
             <p class="send-title">
@@ -85,7 +85,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="ss-card card">
+        <div class="ss-card card shadow">
             <div class="ss-card-header">
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
@@ -110,7 +110,7 @@
 @foreach ($questions as $question)
 <div class="row justify-content-center" style="margin-bottom:1em;">
     <div class="col-md-12">
-        <div class=" ss-card card">
+        <div class=" ss-card card ">
                     <div class="q-card-header">
                             Q{{$question->no}}／{{$question_count}}
                     </div>
@@ -139,7 +139,7 @@
 <!--　タイプマトリックス -------------------------->
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="ss-card card ">
+        <div class="ss-card card shadow">
             <div class="card-body float-none">
     
 <table width="100%" height="100%" class="table table-bordered" style="margin-bottom:0">
@@ -212,7 +212,7 @@
 @foreach($results as $key=>$value)
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="ss-card card">
+        <div class="ss-card card shadow">
             <a name="type{{$key}}"></a>
         
             <div class="ss-card-header">
