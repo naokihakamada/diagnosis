@@ -253,9 +253,13 @@ class HomeController extends Controller
 
         //診断結果データ
         $styles = DiagnosisResultType::where('diagnosis_table_id', $urec->title_id)->where('style', $urec->my_type)->get()->toArray();
+        $result_contents = array();
+        foreach ($styles as $s) {
+            $result_contents[$s['style']] = $s;
+        }
 
         //メール送信
-        Mail::to($urec->email)->send(new SendAccessID($urec, $styles));
+        Mail::to($urec->email)->send(new SendAccessID($urec, $result_contents));
 
         //アクセスidへリダイレクト
         return redirect()->route('user_result', ['access_id'=>$access_id, 'alias'=>$alias, ]);
@@ -304,7 +308,7 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $limit=-1;
+        $limit=5;
         if ($limit>0) {
             $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->limit($limit)->get();
         } else {

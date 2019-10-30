@@ -87,7 +87,25 @@
         <input type="hidden" name="alias" value="{{$alias}}">
 
         @foreach ($questions as $question)
-        <div id="block-{{$question->no}}" ></div>
+        <div id="block-{{$question->no}}" >
+            @if (in_array($question->no, array(intval($question_count-10), intval($question_count/2))))
+<div class="row justify-content-center" style="margin-bottom:1em;">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body q-card-title alert-info" >
+残り
+@if ($question->no == intval($question_count/2))
+半分(@php echo intval($question_count/2); @endphp問)
+@else
+10問
+@endif
+です
+            </div>
+        </div>
+    </div>
+</div>
+            @endif
+        </div>
         <div class="row justify-content-center" style="margin-bottom:1em;">
             <div class="col-md-12">
             <div class="ss-card card">

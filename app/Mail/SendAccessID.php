@@ -23,6 +23,21 @@ class SendAccessID extends Mailable
         //
         $this->user_result = $urec;
         $this->user_style = $style;
+
+        //
+        $this->from = array([
+            "address" => "info@ecm-training.com",
+            "name" => "コミュニケーションスタイル診断 大村 亮介"
+        ]);
+
+        //
+        $this->to = array([
+            "address" => $urec->email,
+            "name" => $urec->name
+        ]);
+
+        //
+        $this->subject = "[コミュニケーション診断] <".$urec->name.">様の診断結果へのアクセス情報をお送りいたします。";
     }
 
     /**
@@ -32,7 +47,7 @@ class SendAccessID extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.access_id')
-        ->subject('メール送信します');
+        return $this->text('mails.access_id')
+        ->with(["urec"=>$this->user_result, "style"=>$this->user_style]);
     }
 }
