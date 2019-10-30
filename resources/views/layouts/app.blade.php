@@ -201,7 +201,7 @@ border-bottom:2px solid #444444;
         background: url("/images/comm-style.png") no-repeat left center;
         background-size: contain;
         height: 50px;
-        width: 250px;
+        width: 350px;
     }
 
     /* ボタンに長いテキスト対応 */
