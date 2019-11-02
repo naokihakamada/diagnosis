@@ -176,7 +176,6 @@ border-bottom:2px solid #444444;
     -webkit-animation:blink 1.5s ease-in-out infinite alternate;
     -moz-animation:blink 1.5s ease-in-out infinite alternate;
     animation:blink 1.5s ease-in-out infinite alternate;
-    border-color: red;
 }
 @-webkit-keyframes blink{
     0% {opacity:0.2;}

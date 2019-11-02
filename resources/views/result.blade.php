@@ -86,7 +86,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="ss-card card shadow">
-            <div class="ss-card-header" style="background-color:{{$result_contents[$my_type]["color"]}};color:black;">
+            <div class="ss-card-header" style="background-color:white ;color:black;">
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
             @else
@@ -95,7 +95,7 @@
             </div>
             <div class="card-body float-none" style="background-color1:{{$result_contents[$my_type]["color"]}};">
 
-<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></h3>
+<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="background-color:{{$result_contents[$my_type]["color"]}};><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></mark></h3>
             </div>
         </div>
     </div>
@@ -150,9 +150,9 @@
         <td width="10%" class="rc-block @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
         <td width="80%" style="padding:0">
 
-<table width="100%" height="100%" bgcolor="white" style="border-style: none;border:0px;">
+<table width="100%" height="100%" bgcolor="white" style="border-style: none;border:0px;overflow:visible">
     <tr>
-        <td width="50%" align="center" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" class="shadow-lg " @endif>
+        <td width="50%" align="center" bgcolor="{{$result_contents['A']["color"]}}" @if($my_type=='A') class="shadow-lg blinking" @endif>
             <table width="70%" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif style="margin-top:1em;">
                 <tr>
                     <td class="text-center rc-block" ><a class="type-non-anchor" href="#typeA"><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></a></td>
@@ -162,7 +162,7 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}" class="shadow-lg " @endif>
+        <td width="50%" align="center" bgcolor="{{$result_contents['B']["color"]}}" @if($my_type=='B') class="shadow-lg blinking" @endif>
             <table width="70%" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}"@endif style="margin-top:1em">
                 <tr>
                     <td class="text-center rc-block"><a class="type-non-anchor" href="#typeB"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></a></td>
@@ -174,7 +174,7 @@
         </td>
     </tr>
     <tr>
-        <td width="50%" align="center" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}" class="shadow-lg " @endif>
+        <td width="50%" align="center" bgcolor="{{$result_contents['C']["color"]}}" @if($my_type=='C') class="shadow-lg blinking" @endif>
             <table width="70%" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}"@endif style="margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-right rc-block">{{$results["C"]}}</td>
@@ -184,7 +184,7 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center"  @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}" class="shadow-lg " @endif>
+        <td width="50%" align="center"  bgcolor="{{$result_contents['D']["color"]}}" @if($my_type=='D') class="shadow-lg blinking" @endif>
             <table width="70%" @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}"@endif style="margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-left rc-block">{{$results["D"]}}</td>
@@ -218,7 +218,7 @@
             <div class="ss-card-header" style="background-color:{{$result_contents[$key]["color"]}};color:black;">
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
                         @if($key==$my_type)あなたのタイプ<br /><br />@endif
-                        <mark>{{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}</mark><br /><br />の特徴（傾向）は
+                        {{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}<br /><br />の特徴（傾向）は
                 </h2>
             </div>
 
@@ -232,7 +232,7 @@
 </div>
 <br />
 @if($key==$my_type)
-<hr /><h2 class="text-center">以下は他のタイプの特徴になります。<br />参考にしてください</h2><hr /><br />
+<hr /><h2 class="text-center">以下、他の３タイプの特徴です。<br />接する際の注意点もぜひ、ご参考ください。</h2><hr /><br />
 @endif
 @endforeach
 

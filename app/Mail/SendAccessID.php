@@ -47,8 +47,8 @@ class SendAccessID extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.access_id')
-        ->text('mails.access_id')
+        return $this->text('mails.access_id')
+        //->view('mails.access_id')
         ->with(["urec"=>$this->user_result, "style"=>$this->user_style]);
     }
 }

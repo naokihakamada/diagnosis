@@ -311,7 +311,7 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $limit=-1;
+        $limit=intval(env("QUESTION_COUNT", "-1"));
         if ($limit>0) {
             $questions = DiagnosisQuestion::where("diagnosis_table_id", $id)->orderBy("id")->limit($limit)->get();
         } else {
