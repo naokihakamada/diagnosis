@@ -15,17 +15,17 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="ss-card card shadow">
-            <div class="ss-card-header" style="background-color:white;color:black;">
+            <div class="ss-card-header" style="background-color:{{$result_contents[$my_type]["color"]}};color:black;">
                 <h2 class="text-center align-middle card-mark" style="margin-bottom:0;">
                     @if($user_record['name']=="")
                     あなたのコミュニケーションスタイルは
                     @else
-                    <mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは
+                    {{$user_record['name']}}さん のコミュニケーションスタイルは
                     @endif
                 </h2>
             </div>
             <div class="card-body float-none" style1="background-color:{{$result_contents[$my_type]["color"]}};">
-                <h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="background-color:{{$result_contents[$my_type]["color"]}};">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</mark></h3>
+                <h3 class="text-center" style="margin-bottom:1em;margin-top:1em;">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</h3>
             </div>
         </div>
     </div>

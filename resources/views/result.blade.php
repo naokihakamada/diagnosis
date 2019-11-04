@@ -90,7 +90,7 @@
             @if(!$user_result)
             <h2 class="text-center">あなたのコミュニケーションスタイルは</h2>
             @else
-            <h2 class="text-center align-middle card-mark" style="margin-bottom:0;"><mark>{{$user_record['name']}}さん</mark> のコミュニケーションスタイルは</h2>
+            <h2 class="text-center align-middle card-mark" style="margin-bottom:0;">{{$user_record['name']}}さん のコミュニケーションスタイルは</h2>
             @endif
             </div>
             <div class="card-body float-none" style="background-color1:{{$result_contents[$my_type]["color"]}};">
