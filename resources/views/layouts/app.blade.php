@@ -252,6 +252,16 @@ th + th,td{
     border: 0px;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+ 
+
 </style>
     <!-- CSS Files -->
     <!--
@@ -279,6 +289,12 @@ th + th,td{
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container text-center">
+              <p class="text-muted">Copyright (C) 2019- コミュニケーションスタイル診断 All Rights Reserved.</p>
+            </div>
+        </footer>    
     </div>
 
     <!-- <script src="https://rawgit.com/ftlabs/fastclick/master/lib/fastclick.js"></script> -->
