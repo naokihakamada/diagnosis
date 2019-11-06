@@ -4,7 +4,7 @@
 <script>
         function go_save(){
             $.cookie('diagnosis', '9', {expires: 300, path:"/"});
-            alert('cookie');
+            //alert('cookie');
 
             @if(0)
             Cookies.set('diagnosis', "9");

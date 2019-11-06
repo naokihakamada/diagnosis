@@ -211,6 +211,7 @@ class HomeController extends Controller
         if (!is_null($urec->access_id)) {
             $bUserResult = true;
         }
+        Cookie::queue('diagnosis', "9", 300*24*60, "/");
 
         //診断結果データ
         $styles = DiagnosisResultType::where('diagnosis_table_id', $id)->get()->toArray();
