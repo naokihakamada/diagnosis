@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 <a class="btn" href="{{route('admin_')}}">メニューへ</a>　
-<a class="btn" href="./">再描画</a>
+<a class="btn" href="{{route('logs')}}">再描画</a>
 <br /><hr />
                     <table class="table table-bordered ">
                         <tr bgcolor="gray"  style="color:white">
