@@ -86,6 +86,9 @@ class HomeController extends Controller
                 //user_resultの存在確認
                 $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
                 if (!is_null($urec)) {
+                    //リセット
+                    $urec->p1 = Carbon::now();
+                    $urec->save();
                     break;
                 }
                 Cookie::queue('diagnosis', "", 300*24*60, "/");
@@ -196,11 +199,11 @@ class HomeController extends Controller
             }
             //回答、チェック時間、
             $urec->my_type = $my_type;
-            $urec->p3 = Carbon::now();
-            $urec->save();
         } else {
             $urec = $user_record;
         }
+        $urec->p3 = Carbon::now();
+        $urec->save();
 
         //既にアクセスIDをもっている
         if (!is_null($urec->access_id)) {
