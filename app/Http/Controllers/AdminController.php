@@ -82,7 +82,6 @@ class AdminController extends Controller
                 $urec->p1 = null;
                 $urec->p2 = null;
                 $urec->p3 = null;
-                $urec->p4 = null;
                 $urec->save();
                 break;
             case '2'://削除

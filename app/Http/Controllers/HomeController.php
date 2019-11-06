@@ -203,6 +203,7 @@ class HomeController extends Controller
             $urec = $user_record;
         }
         $urec->p3 = Carbon::now();
+        $urec->p4 = Carbon::now();
         $urec->save();
 
         //既にアクセスIDをもっている
