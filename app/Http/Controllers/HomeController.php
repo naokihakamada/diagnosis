@@ -303,6 +303,13 @@ class HomeController extends Controller
         }
         $req->merge($set_req);
 
+        //アクセス回数を保存する
+        if (!$answer_check) {
+            //結果を見に来た
+            $urec->memo .= "¥n".strvla(Carbon::now());
+            $urec->save();
+        }
+
         return $this->diagnosis_result($req, true, $answer_check, $urec);
     }
 
