@@ -15,6 +15,7 @@
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Auth::routes();
 
 Route::get("/check", function () {
     abort(404);
@@ -38,6 +39,8 @@ Route::get("/admin_/types/{title_id}", "AdminController@types")->name("admin_typ
 Route::get("/admin_/logs", "AdminController@logs")->name('admin_logs');
 Route::post("/admin_/logs", "AdminController@log_action");
 
+Route::get("/admin_/email", "AdminController@emails")->name('admin_email');
+
 Route::get('/save', function () {
     abort(404);
 });
@@ -58,7 +61,3 @@ Route::get("/{alias}/{access_id}/answer", "HomeController@user_answer")->name('u
 Route::post('/{alias}/{access_id}', function () {
     abort(404);
 });
-
-
-
-#Auth::routes();

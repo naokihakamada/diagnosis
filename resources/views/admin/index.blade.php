@@ -14,6 +14,9 @@
                         <a href="{{ route('admin_titles')}}">診断タイトル作成</a>
                         </li>
                         <li>
+                            <a href="{{ route('admin_email')}}">送信メール編集</a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin_logs')}}">アクセスログ</a>
                             </li>
                         </ul>

@@ -7,10 +7,20 @@ use App\Model\DiagnosisResultType;
 use App\Model\DiagnosisTitle;
 use App\Model\User;
 use App\Model\UserResult;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index()
     {
@@ -40,8 +50,20 @@ class AdminController extends Controller
 
     public function logs()
     {
-        $logs = UserResult::all();
+        $logs = UserResult::orderBy('id', 'desc')->paginate(20);
 
+        //回答にかかった時間を追加する
+        foreach ($logs as $log) {
+            if (is_null($log->p1) || is_null($log->p2)) {
+                $log->pp2 = "";
+            } else {
+                $p1 = new Carbon($log->p1);
+                $p2 = new Carbon($log->p2);
+    
+                $log->pp2 = $p2->diffInSeconds($p1);
+            }
+        }
+        
         return view("admin.logs", ['logs'=>$logs,]);
     }
 
@@ -49,17 +71,23 @@ class AdminController extends Controller
     {
         $id = $req->input("user_id");
         switch ($req->input('form-type')) {
-            case '1'://再診断
-                //回答、タイプをクリアする
+            case '1'://リセット
+                //アクセスIDのまま、再診断ができる
                 $urec = UserResult::where("id", $id)->first();
                 if (is_null($urec)) {
                     abort(404);
                 }
                 $urec->answer = "";
                 $urec->my_type = "";
+                $urec->p1 = null;
+                $urec->p2 = null;
+                $urec->p3 = null;
+                $urec->p4 = null;
                 $urec->save();
                 break;
-            case '2'://新規へ
+            case '2'://削除
+                //なかったことになる
+                UserResult::where('id', $id)->delete();
                 break;
             default:
                 break;

@@ -17,8 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        $this->makeDiagnosis();
+        //$this->call(UsersTableSeeder::class);
+        //$this->makeDiagnosis();
+        $this->user_regist();
+    }
+
+    private function user_regist()
+    {
+        //
+        DB::table('users')->insert([
+            'name' => '管理人',
+            'email' => '_admin_@ecm-training.com',
+            'password' => bcrypt('ecm-training-oomura'),
+            ]);
     }
 
     private $diagnosises = [
