@@ -119,7 +119,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function diagnosis_check(Request $req)
+    public function diagnosis_check(Request $req, $bUserResult=false)
     {
         $id = $req->input('title_id');
         $alias = $req->input('alias');
@@ -143,7 +143,10 @@ class HomeController extends Controller
 
         //回答、チェック時間、
         $urec->answer = $req->cookie('answers');
-        $urec->p2 = Carbon::now();
+        //直接回答結果を見る場合にのみ更新
+        if (!$bUserResult) {
+            $urec->p2 = Carbon::now();
+        }
         $urec->save();
 
         return view('questions_check', [
@@ -158,7 +161,7 @@ class HomeController extends Controller
 
     public function diagnosis_result(Request $req, $bUserResult=false, $answer_check=false, $user_record=null)
     {
-        $this->diagnosis_check($req);
+        $this->diagnosis_check($req, $bUserResult);
         //結果判定
         $id = $req->input('title_id');
         $alias = $req->input('alias');
