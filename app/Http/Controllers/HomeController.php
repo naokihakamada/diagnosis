@@ -54,6 +54,7 @@ class HomeController extends Controller
                 $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
                 if (is_null($urec)) {
                     Cookie::queue('diagnosis', "", 300*24*60, "/");
+                    Cookie::queue('answers', "", 300*24*60, "/");
                     $s_id = $req->session()->getId();
                     $urec = UserResult::firstOrCreate(['session_id' => $s_id]);
                     $urec->title_id = $id;
