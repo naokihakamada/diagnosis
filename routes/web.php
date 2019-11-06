@@ -39,7 +39,21 @@ Route::get("/admin_/types/{title_id}", "AdminController@types")->name("admin_typ
 Route::get("/admin_/logs", "AdminController@logs")->name('admin_logs');
 Route::post("/admin_/logs", "AdminController@log_action");
 
-Route::get("/admin_/email", "AdminController@emails")->name('admin_email');
+//Route::get("/admin_/email", "AdminController@emails")->name('admin_email');
+
+Route::get('/admin_/mail_test/{pos?}', 'AdminMailController@mail_test')->name('admin_mail_test');
+Route::post('/admin_/mail_test', function () {
+    abort(404);
+});
+Route::post('/admin_/mail_send_test', 'AdminMailController@mail_send_test')->name('admin_send_test');
+Route::get('/admin_/mail_send_test', function () {
+    abort(404);
+});
+Route::post('/admin_/mail_edit', 'AdminMailController@mail_edit')->name('admin_mail_edit');
+Route::get('/admin_/mail_edit', function () {
+    abort(404);
+});
+
 
 Route::get('/save', function () {
     abort(404);
