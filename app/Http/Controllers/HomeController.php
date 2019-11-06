@@ -203,10 +203,10 @@ class HomeController extends Controller
             }
             //回答、チェック時間、
             $urec->my_type = $my_type;
+            $urec->p3 = Carbon::now();
         } else {
             $urec = $user_record;
         }
-        $urec->p3 = Carbon::now();
         $urec->p4 = Carbon::now();
         $urec->save();
 
