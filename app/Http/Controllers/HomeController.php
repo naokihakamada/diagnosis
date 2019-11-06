@@ -208,6 +208,9 @@ class HomeController extends Controller
             $urec = $user_record;
         }
         $urec->p4 = Carbon::now();
+        if (!$bUserResult) {
+            $urec->memo1 = $urec->memo1 . strval(Carbon::now()) . "|";
+        }
         $urec->save();
 
         //既にアクセスIDをもっている
@@ -306,7 +309,7 @@ class HomeController extends Controller
         //アクセス回数を保存する
         if (!$answer_check) {
             //結果を見に来た
-            $urec->memo .= "¥n".strvla(Carbon::now());
+            $urec->memo1 = $urec->memo1 . strval(Carbon::now()) . "|";
             $urec->save();
         }
 

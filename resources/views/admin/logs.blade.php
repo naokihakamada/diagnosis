@@ -31,7 +31,7 @@
                             <tr @if($loop->iteration%2==0) bgcolor="lightgray" @endif>
                                 <td rowspan="2">{{$log->id}}</td>
                                 <td>{{$log->email}}<br />{{$log->updated_at}}</td>
-                                <td>{{$log->name}}</td>
+                                <td>{{$log->name}}<br />閲覧回数（{{$log->view_count}}）</td>
                                 <td><a href="{{route('user_result',['access_id'=>$log->access_id, 'alias'=>$log->alias,])}}">{{$log->access_id}}</a></td>
                                 <td>{{$log->alias}}</td>
                                 <td>{{$log->my_type}}</td>

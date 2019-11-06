@@ -62,6 +62,8 @@ class AdminController extends Controller
     
                 $log->pp2 = $p2->diffInSeconds($p1);
             }
+            //閲覧回数
+            $log->view_count = count(explode("|", $log->memo1));
         }
         
         return view("admin.logs", ['logs'=>$logs,]);
