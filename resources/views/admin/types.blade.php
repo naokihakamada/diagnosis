@@ -8,7 +8,7 @@
                 <div class="card-header">タイプ</div>
 
                 <div class="card-body">
-<a href="{{route('admin_')}}">メニューへ</a>
+                    <a href="{{route('admin_titles')}}">診断タイトルへ</a>
 <br /><hr />
                     <table class="table table-bordered">
                         <tr>
@@ -40,8 +40,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">{{$type->contents}}</td>
-                                <td colspan="2">{{$type->communication}}</td>
+                                <td colspan="2">@php echo htmlspecialchars(mb_substr($type->contents,0,200))."..."; @endphp</td>
+                                <td colspan="2">@php echo htmlspecialchars(mb_substr($type->communication,0,200))."..."; @endphp</td>
                             </tr>
                         @endforeach
                     </table>

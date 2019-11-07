@@ -9,10 +9,10 @@
 
                 <div class="card-body">
 
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <tr>
-                            <th width="10%">ID</th>
-                            <th width="35%">タイトル</th>
+                            <th width="15%">アクセスキー名</th>
+                            <th width="30%">タイトル</th>
                             <th width="35%">コメント</th>
                             <th width="20%">アクション</th>
                         </tr>
@@ -22,10 +22,11 @@
                             <td>{{$title->title}}</td>
                             <td>{{$title->contents}}</td>
                             <td>
-                                <a href="{{route('admin_questions', ["title_id"=>$title->id])}}">質問へ</a><br />
-                                <a href="{{route('admin_types', ["title_id"=>$title->id])}}">タイプへ</a><br />
-                                <a href="">編集</a><br />
-                                <a href="">削除</a>
+                                <a class="btn btn-outline-primary " href="{{route('admin_questions', ["title_id"=>$title->id])}}">質問へ</a>&nbsp;
+                                <a class="btn btn-outline-primary " href="{{route('admin_types', ["title_id"=>$title->id])}}">タイプへ</a><br />
+                                <hr />
+                                <a class="btn btn-outline-primary " href="">編集</a>&nbsp;
+                                <a class="btn btn-outline-primary " href="">削除</a>
                             </td>
                     @endforeach
                         </tr>

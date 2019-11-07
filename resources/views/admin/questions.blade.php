@@ -21,7 +21,7 @@
                             <tr>
                                 <td rowspan="2">{{$question->no}}</td>
                                 <td>{{$question->title}}</td>
-                                <td><a href="{{route('admin_questions', ["title_id"=>$question->id])}}">編集</a> <a href="">削除</a></td>
+                                <td><a class="btn btn-outline-primary " href="{{route('admin_questions', ["title_id"=>$question->id])}}">編集</a> <a class="btn btn-outline-primary " href="">削除</a></td>
                             </tr>
                             <tr>
                                     <td>
@@ -41,6 +41,53 @@
                                     <td></td>
                             </tr>
                         @endforeach
+                    </table>
+                    
+                    <hr />
+                    <table class="table table-bordered">
+                        <tr>
+                            <th colspan="2">質問　追加</th>
+                        </tr>
+                        <tr>
+                            <td>質問　内容</td>
+                            <td>
+                                <input type="text" size="50">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>回答(選択肢)　内容</td>
+                            <td>
+                                <table width="100%" class="table table-bordered">
+                                    <tr>
+                                        <td>No</td>
+                                        <td>選択肢　内容</td>
+                                        <td>タイプAポイント</td>
+                                        <td>タイプBポイント</td>
+                                        <td>タイプCポイント</td>
+                                        <td>タイプDポイント</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" size="30"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" size="30"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                        <td><input type="text" size="5"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" value="追加"></td>
+                        </tr>
                     </table>
 
                     <hr />
