@@ -34,6 +34,8 @@ Route::post("/communication/{alias}/{type}", function () {
 Route::get("/admin_", "AdminController@index")->name('admin_');
 Route::get("/admin_/titles", "AdminController@titles")->name('admin_titles');
 Route::get("/admin_/questions/{title_id}", "AdminController@questions")->name('admin_questions');
+Route::get("/admin_/questions/edit/{title_id}/{no}", "AdminController@question_edit")->name('admin_question_edit');
+Route::post("/admin_/questions/edit/{title_id}/{no}", "AdminController@question_edit_update");
 Route::get("/admin_/types/{title_id}", "AdminController@types")->name("admin_types");
 
 Route::get("/admin_/logs", "AdminController@logs")->name('admin_logs');

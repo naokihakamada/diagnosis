@@ -8,7 +8,7 @@
                 <div class="card-header">診断質問作成</div>
 
                 <div class="card-body">
-<a href="{{route('admin_titles')}}">診断タイトルへ</a>
+<a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>
 <br /><hr />
                     <table class="table table-bordered">
                         <tr>
@@ -21,7 +21,7 @@
                             <tr>
                                 <td rowspan="2">{{$question->no}}</td>
                                 <td>{{$question->title}}</td>
-                                <td><a class="btn btn-outline-primary " href="{{route('admin_questions', ["title_id"=>$question->id])}}">編集</a> <a class="btn btn-outline-primary " href="">削除</a></td>
+                                <td><a class="btn btn-outline-primary " href="{{route('admin_question_edit', ["title_id"=>$title_id, "no"=>$question->no])}}">編集</a> <a class="btn btn-outline-primary " href="">削除</a></td>
                             </tr>
                             <tr>
                                     <td>
@@ -91,7 +91,7 @@
                     </table>
 
                     <hr />
-                    <a href="{{route('admin_titles')}}">診断タイトルへ</a>
+                    <a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>
                 </div>
                 
             </div>

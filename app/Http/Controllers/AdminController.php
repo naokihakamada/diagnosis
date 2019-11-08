@@ -38,7 +38,7 @@ class AdminController extends Controller
     {
         $questions = DiagnosisQuestion::where("diagnosis_table_id", $title_id)->orderBy('no')->get();
 
-        return view("admin.questions", ['questions'=>$questions,]);
+        return view("admin.questions", ['title_id'=>$title_id, 'questions'=>$questions,]);
     }
 
     public function types($title_id)
@@ -94,5 +94,24 @@ class AdminController extends Controller
                 break;
         }
         return $this->logs();
+    }
+
+    public function question_edit($title_id, $no, Request $req)
+    {
+        $questions = DiagnosisQuestion::where("diagnosis_table_id", $title_id)->where("no", $no)->get();
+        return view("admin.question_edit", ['title_id'=>$title_id, 'no'=>$no, 'questions'=>$questions,]);
+    }
+
+    public function question_edit_update($title_id, $no, Request $req)
+    {
+        //dd($req);
+        //
+        $question = DiagnosisQuestion::where("diagnosis_table_id", $title_id)->where("no", $no)->first();
+        $question->title = $req->input("question_title");
+        $question->save();
+
+        \Session::flash('status', '更新しました');
+
+        return $this->question_edit($title_id, $no, $req);
     }
 }
