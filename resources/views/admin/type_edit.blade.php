@@ -10,42 +10,51 @@
                 <div class="card-body">
                     <a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>
 <br /><hr />
+<form action="" method="POST">
+    @csrf
                     <table class="table table-bordered">
                         <tr>
-                            <th rowspan="3" width="10%">タイプ</th>
-                            <th width="20%">名称</th>
-                            <th width="20%">キーワード</th>
+                            <th rowspan="4" width="10%">タイプ</th>
+                            <th width="25%">名称</th>
+                            <th width="25%">キーワード</th>
                             <th width="30%">カナ</th>
-                            <th width="10%">アクション</th>
                         </tr>
                         <tr>
-                            <th colspan="4">カラー</th>
+                            <th colspan="3">カラー</th>
                         </tr>
                         <tr>
-                            <th colspan="2">コンテンツ</th>
-                            <th colspan="2">コミュ注意点</th>
+                            <th colspan="3">コンテンツ</th>
+                        </tr>
+                        <tr>
+                            <th colspan="3">コミュ注意点</th>
                         </tr>
 
                         @foreach($types as $type)
                             <tr>
-                                <td rowspan="3">{{$type->style}}</td>
-                                <td>{{$type->type}}</td>
-                                <td>{{$type->name}}</td>
-                                <td>{{$type->kana}}</td>
-                                <td><a class="btn btn-outline-primary " href="{{route('admin_type_edit',['title_id'=>$title_id,'style'=>$type->style,])}}">編集</a></td>
+                            <td rowspan="4">{{$type->style}}<input type="hidden" name="style" value="{{$type->style}}" ></td>
+                                <td><input type="text" name="style-type" value="{{$type->type}}"></td>
+                                <td><input type="text" name="style-name" value="{{$type->name}}"></td>
+                                <td><input type="text" name="style-kana" size="20" value="{{$type->kana}}"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" bgcolor="{{$type->color}}">
-                                    {{$type->color}}
+                                    <input type="text" name="style-color" value="{{$type->color}}">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">@php echo htmlspecialchars(mb_substr($type->contents,0,200))."..."; @endphp</td>
-                                <td colspan="2">@php echo htmlspecialchars(mb_substr($type->communication,0,200))."..."; @endphp</td>
+                                <td colspan="3"><textarea cols="100" rows="20" name="style-contents">{{$type->contents}}</textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><textarea cols="100" rows="20" name="style-communication">{{$type->communication}}</textarea></td>
                             </tr>
                         @endforeach
-                    </table>
-
+                        <tr>
+                            <td colspan="4">
+                                <input type="submit" value="更新する">
+                            </td>
+                    </tr>
+                </table>
+                </form>
                     <hr />
                     <a class="btn btn-outline-primary " href="{{route('admin_')}}">メニューへ</a>
                 </div>

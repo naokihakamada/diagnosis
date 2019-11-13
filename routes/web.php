@@ -37,9 +37,12 @@ Route::get("/admin_/questions/{title_id}", "AdminController@questions")->name('a
 Route::get("/admin_/questions/edit/{title_id}/{no}", "AdminController@question_edit")->name('admin_question_edit');
 Route::post("/admin_/questions/edit/{title_id}/{no}", "AdminController@question_edit_update");
 Route::get("/admin_/types/{title_id}", "AdminController@types")->name("admin_types");
+Route::get("/admin_/types/edit/{title_id}/{style}", "AdminController@type_edit")->name("admin_type_edit");
+Route::post("/admin_/types/edit/{title_id}/{style}", "AdminController@type_edit_update");
 
 Route::get("/admin_/logs", "AdminController@logs")->name('admin_logs');
 Route::post("/admin_/logs", "AdminController@log_action");
+Route::get("/admin_/logs_emails", "AdminController@logs_emails")->name("admin_logs_emails");
 
 //Route::get("/admin_/email", "AdminController@emails")->name('admin_email');
 

@@ -8,8 +8,9 @@
                 <div class="card-header">ログ確認</div>
 
                 <div class="card-body">
-<a class="btn" href="{{route('admin_')}}">メニューへ</a>　
-<a class="btn" href="{{route('admin_logs')}}">再描画</a>
+<a class="btn btn-outline-primary "  href="{{route('admin_')}}">メニューへ</a>　
+<a class="btn btn-outline-primary "  href="{{route('admin_logs')}}">再描画</a>
+<a class="btn btn-outline-primary "  href="{{route('admin_logs_emails')}}">メールアドレスダウンロード</a>
 <br /><hr />
                     <table class="table table-bordered ">
                         <tr bgcolor="gray"  style="color:white">
@@ -54,7 +55,7 @@
                     {{ $logs->links() }}
 
                     <hr />
-                    <a class="btn" href="{{route('admin_')}}">メニューへ</a>
+                    <a class="btn btn-outline-primary "  href="{{route('admin_')}}">メニューへ</a>
                 </div>
                 
             </div>

@@ -11,7 +11,7 @@
 
                     <ul>
                         <li>
-                        <a href="{{ route('admin_titles')}}">診断タイトル作成</a>
+                        <a href="{{ route('admin_titles')}}">診断タイトル</a>
                         </li>
                         <li>
                             <a href="{{ route('admin_mail_test')}}">送信メール編集</a>

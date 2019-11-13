@@ -21,7 +21,7 @@
                             <tr>
                                 <td rowspan="2">{{$question->no}}</td>
                                 <td>{{$question->title}}</td>
-                                <td><a class="btn btn-outline-primary " href="{{route('admin_question_edit', ["title_id"=>$title_id, "no"=>$question->no])}}">編集</a> <a class="btn btn-outline-primary " href="">削除</a></td>
+                                <td><a class="btn btn-outline-primary " href="{{route('admin_question_edit', ["title_id"=>$title_id, "no"=>$question->no])}}">編集</a> @if(0)<a class="btn btn-outline-primary " href="">削除</a>@endif</td>
                             </tr>
                             <tr>
                                     <td>
@@ -43,7 +43,7 @@
                         @endforeach
                     </table>
                     
-                    <hr />
+@if(0)
                     <table class="table table-bordered">
                         <tr>
                             <th colspan="2">質問　追加</th>
@@ -89,6 +89,7 @@
                             <td colspan="2"><input type="submit" value="追加"></td>
                         </tr>
                     </table>
+                @endif
 
                     <hr />
                     <a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>

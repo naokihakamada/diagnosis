@@ -41,7 +41,7 @@
                                             </tr>
                                         @foreach($question->answers() as $ans)
                                             <tr>
-                                                <td>{{$ans->no}}<input type="hidden" name="ano-{{$ans->no}}" value="{{$ans->no}}"></td>
+                                                <td>{{$ans->no}}<input type="hidden" name="ano-id" value="{{$ans->id}}"><input type="hidden" name="ano-{{$ans->no}}" value="{{$ans->no}}"></td>
                                                 <td><input type="text" name="ano-{{$ans->no}}-answer" value="{{$ans->answer}}"></td>
                                                 <td><input type="text" size="5" name="ano-{{$ans->no}}-A" value="{{$ans->blockA_value}}"></td>
                                                 <td><input type="text" size="5" name="ano-{{$ans->no}}-B" value="{{$ans->blockB_value}}"></td>

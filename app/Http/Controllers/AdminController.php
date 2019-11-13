@@ -9,6 +9,7 @@ use App\Model\User;
 use App\Model\UserResult;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Export\UsersExport;
 
 class AdminController extends Controller
 {
@@ -45,7 +46,14 @@ class AdminController extends Controller
     {
         $types = DiagnosisResultType::where("diagnosis_table_id", $title_id)->orderBy("style")->get();
 
-        return view("admin.types", ['types'=>$types,]);
+        return view("admin.types", ['title_id'=>$title_id, 'types'=>$types,]);
+    }
+
+    public function type_edit($title_id, $style, Request $req)
+    {
+        $types = DiagnosisResultType::where("diagnosis_table_id", $title_id)->where('style', $style)->orderBy("style")->get();
+
+        return view("admin.type_edit", ['title_id'=>$title_id, 'types'=>$types,]);
     }
 
     public function logs()
@@ -96,6 +104,15 @@ class AdminController extends Controller
         return $this->logs();
     }
 
+    public function logs_emails(Request $req)
+    {
+        //ログの中より 名前、email のリストをダウンロード
+        return (new UsersExport)->downloadNow();
+
+        $users = UserResult::whereNotNull("email")->get();
+        dd($users);
+    }
+
     public function question_edit($title_id, $no, Request $req)
     {
         $questions = DiagnosisQuestion::where("diagnosis_table_id", $title_id)->where("no", $no)->get();
@@ -110,8 +127,48 @@ class AdminController extends Controller
         $question->title = $req->input("question_title");
         $question->save();
 
+        //選択肢
+        $answs = $question->answers();
+        foreach ($answs as $ans) {
+            $key = "ano-".strval($ans->no);
+            $ano = intval($req->input($key));
+            //
+            //dd($ans, $key, $ano, $no, $ans->no, $req);
+            if ($ano == $ans->no) {
+                $ans->answer = $req->input($key . "-answer");
+                $ans->blockA_value = $req->input($key . "-A");
+                $ans->blockB_value = $req->input($key . "-B");
+                $ans->blockC_value = $req->input($key . "-C");
+                $ans->blockD_value = $req->input($key . "-D");
+                //
+                $ans->save();
+            }
+        }
+
         \Session::flash('status', '更新しました');
 
         return $this->question_edit($title_id, $no, $req);
+    }
+
+    public function type_edit_update($title_id, $style, Request $req)
+    {
+        $types = DiagnosisResultType::where("diagnosis_table_id", $title_id)->where('style', $style)->orderBy("style")->get();
+
+        foreach ($types as $ty) {
+            if ($ty->style == $req->input("style")) {
+                $ty->type = $req->input("style-type");
+                $ty->name = $req->input("style-name");
+                $ty->kana = $req->input("style-kana");
+                $ty->type = $req->input("style-type");
+                $ty->color = $req->input("style-color");
+
+                $ty->contents = $req->input("style-contents");
+                $ty->communication = $req->input("style-communication");
+
+                $ty->save();
+            }
+        }
+
+        return $this->type_edit($title_id, $style, $req);
     }
 }
