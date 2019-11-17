@@ -120,7 +120,7 @@
 <div style="text-align:center;">
             <div class="btn-group btn-group-toggle btn-group-justified" data-toggle="buttons">
                     @foreach ($question->answers() as $ans)
-                    <label id="label-{{$question->no}}-{{$ans->no}}" class="btn btn-outline-primary " style="padding-left:40px;padding-right:40px;margin-right:1em;margin-left:1em;" onclick="onClickAnswer({{$question->no}},{{$ans->no}},{{$question_count}});">
+                    <label id="label-{{$question->no}}-{{$ans->no}}" class="btn btn-outline-primary " style="padding-left:40px;padding-right:40px;margin-right:0.5em;margin-left:0.5em;" onclick="onClickAnswer({{$question->no}},{{$ans->no}},{{$question_count}});">
                         <input type="radio" name="q-{{$question->no}}" value="{{$ans->no}}">
                         {{$ans->answer}}
                     </label>
