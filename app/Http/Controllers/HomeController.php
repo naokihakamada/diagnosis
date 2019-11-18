@@ -145,10 +145,13 @@ class HomeController extends Controller
                     abort(404);
                 }
             }
+            if (is_null($urec->answer)) {
+                $urec->answer = $req->cookie('answers');
+            }
         }
 
         //回答、チェック時間、
-        $urec->answer = $req->cookie('answers');
+        //$urec->answer = $urec->answer;//$req->cookie('answers');
         //直接回答結果を見る場合にのみ更新
         if (!$bUserResult) {
             $urec->p2 = Carbon::now();
