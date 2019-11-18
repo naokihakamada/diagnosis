@@ -119,7 +119,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function diagnosis_check(Request $req, $bUserResult=false)
+    public function diagnosis_check(Request $req, $bUserResult=false, $user_record=null)
     {
         $id = $req->input('title_id');
         $alias = $req->input('alias');
@@ -129,15 +129,20 @@ class HomeController extends Controller
         foreach ($questions as $i=>$q) {
             array_push($checks, $req->input("q-".strval($i+1)));
         }
-        //
-        $s_id = $req->session()->getId();
-        $urec = UserResult::where('session_id', $s_id)->first();
-        if (is_null($urec)) {
-            if (!is_null($req->cookie('user_result_id'))) {
-                $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
-            }
+        if ($bUserResult && $user_record) {
+            $urec = $user_record;
+            Cookie::queue('user_result_id', $urec->id, 300*24*60, "/");
+        } else {
+            //
+            $s_id = $req->session()->getId();
+            $urec = UserResult::where('session_id', $s_id)->first();
             if (is_null($urec)) {
-                abort(404);
+                if (!is_null($req->cookie('user_result_id'))) {
+                    $urec = UserResult::where('id', $req->cookie('user_result_id'))->first();
+                }
+                if (is_null($urec)) {
+                    abort(404);
+                }
             }
         }
 
@@ -161,7 +166,7 @@ class HomeController extends Controller
 
     public function diagnosis_result(Request $req, $bUserResult=false, $answer_check=false, $user_record=null)
     {
-        $this->diagnosis_check($req, $bUserResult);
+        $this->diagnosis_check($req, $bUserResult, $user_record);
         //結果判定
         $id = $req->input('title_id');
         $alias = $req->input('alias');
