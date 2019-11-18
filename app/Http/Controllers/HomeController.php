@@ -132,6 +132,7 @@ class HomeController extends Controller
         if ($bUserResult && $user_record) {
             $urec = $user_record;
             Cookie::queue('user_result_id', $urec->id, 300*24*60, "/");
+            Cookie::queue('answers', $urec->answer, 300*24*60, "/");
         } else {
             //
             $s_id = $req->session()->getId();
