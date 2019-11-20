@@ -96,7 +96,7 @@
             </div>
             <div class="card-body float-none" style="background-color1:{{$result_contents[$my_type]["color"]}};">
 
-<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="background-color:{{$result_contents[$my_type]["color"]}};><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></mark></h3>
+<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="line-height:1.5em;background-color:{{$result_contents[$my_type]["color"]}};><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></mark></h3>
             </div>
         </div>
     </div>
