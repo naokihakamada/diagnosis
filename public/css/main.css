@@ -191,6 +191,10 @@ animation:blink 1.5s ease-in-out infinite alternate;
     line-height: 1.5em;
 }
 
+h3 mark{
+    line-height: 1.5em;
+}
+
 .table td, .table th {
     padding: 1em 0.6em 1em 0.6em;
     border: 0px;
