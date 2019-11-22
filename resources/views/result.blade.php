@@ -148,7 +148,7 @@
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
     </tr>
     <tr>
-        <td width="10%" height="100%" class="rc-block vertical @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" style="height:100%"><b>受け止める</b>傾向</span></td>
+        <td width="10%" height="100%" class="rc-block  @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" style="height:100%"><b>受け止める</b>傾向</span></td>
         <td width="80%" style="padding:0">
 
 <table width="100%" height="100%" bgcolor="white" style="border-style: none;border:0px;overflow:visible">
