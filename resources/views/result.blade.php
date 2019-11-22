@@ -143,7 +143,7 @@
         <div class="ss-card card shadow">
             <div class="card-body float-none" style="padding:0;">
     
-<table height="100%" class="table table-bordered" style="width:100%;margin-bottom:0">
+<table class="table table-bordered" style="width:100%;height:100%;margin-bottom:0">
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
     </tr>
@@ -151,7 +151,7 @@
         <td class="rc-block  @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="width:10%;vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
         <td style="width:80%;padding:0">
 
-<table height="100%" bgcolor="white" style="width:100%;border-style: none;border:0px;overflow:visible">
+<table style="width:100%;height:100%;border-style: none;border:0px;overflow:visible;background-color:white;">
     <tr>
         <td align="center" bgcolor="{{$result_contents['A']["color"]}}" @if($my_type=='A') class="width:50%;shadow-lg blinking" @endif>
             <table @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif style="width:70%;margin-top:1em;">
@@ -208,13 +208,13 @@
         </div>
     </div>
 </div>
-<!----------------------------------------->
+<!--===============-->
 <br />
 @foreach($results as $key=>$value)
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="ss-card card shadow">
-            <a name="type{{$key}}"></a>
+            <a id="type{{$key}}"></a>
         
             <div class="ss-card-header" style="background-color:{{$result_contents[$key]["color"]}};color:black;">
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
