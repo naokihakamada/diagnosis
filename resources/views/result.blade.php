@@ -82,7 +82,7 @@
     </div>
 </div>
 
-<!--- --->
+<!--===============-->
 
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -96,7 +96,7 @@
             </div>
             <div class="card-body float-none" style="background-color1:{{$result_contents[$my_type]["color"]}};">
 
-<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="line-height:1.5em;background-color:{{$result_contents[$my_type]["color"]}};><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></mark></h3>
+<h3 class="text-center" style="margin-bottom:1em;margin-top:1em;"><mark style="line-height:1.5em;background-color:{{$result_contents[$my_type]["color"]}};"><a style="color:black" href="#type{{$my_type}}">「{{$result_contents[$my_type]["type"]}} / {{$result_contents[$my_type]["name"]}} / {{$result_contents[$my_type]["kana"]}}」</a></mark></h3>
             </div>
         </div>
     </div>
@@ -133,28 +133,28 @@
     </div>
 </div>
 @endforeach
-<!-------------------------->
+<!--===============-->
 
 
 @else
-<!--　タイプマトリックス -------------------------->
+<!--　タイプマトリックス ===============-->
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="ss-card card shadow">
             <div class="card-body float-none" style="padding:0;">
     
-<table width="100%" height="100%" class="table table-bordered" style="margin-bottom:0">
+<table height="100%" class="table table-bordered" style="width:100%;margin-bottom:0">
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
     </tr>
     <tr>
-        <td width="10%" class="rc-block  @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
-        <td width="80%" style="padding:0">
+        <td class="rc-block  @php if(in_array($my_type,array('A','C'))) echo 'blinking' @endphp" style="width:10%;vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" ><b>受け止める</b>傾向</span></td>
+        <td style="width:80%;padding:0">
 
-<table width="100%" height="100%" bgcolor="white" style="border-style: none;border:0px;overflow:visible">
+<table height="100%" bgcolor="white" style="width:100%;border-style: none;border:0px;overflow:visible">
     <tr>
-        <td width="50%" align="center" bgcolor="{{$result_contents['A']["color"]}}" @if($my_type=='A') class="shadow-lg blinking" @endif>
-            <table width="70%" @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif style="margin-top:1em;">
+        <td align="center" bgcolor="{{$result_contents['A']["color"]}}" @if($my_type=='A') class="width:50%;shadow-lg blinking" @endif>
+            <table @if($my_type=='A') bgcolor="{{$result_contents['A']["color"]}}" @endif style="width:70%;margin-top:1em;">
                 <tr>
                     <td class="text-center rc-block" ><a class="type-non-anchor" href="#typeA"><b>{{$result_contents["A"]["type"]}}<br />{{$result_contents["A"]["name"]}}</b></a></td>
                 </tr>
@@ -163,8 +163,8 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center" bgcolor="{{$result_contents['B']["color"]}}" @if($my_type=='B') class="shadow-lg blinking" @endif>
-            <table width="70%" @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}"@endif style="margin-top:1em">
+        <td align="center" bgcolor="{{$result_contents['B']["color"]}}" @if($my_type=='B') class="width:50%;shadow-lg blinking" @endif>
+            <table @if($my_type=='B') bgcolor="{{$result_contents['B']["color"]}}"@endif style="width:70%;margin-top:1em">
                 <tr>
                     <td class="text-center rc-block"><a class="type-non-anchor" href="#typeB"><b>{{$result_contents["B"]["type"]}}<br />{{$result_contents["B"]["name"]}}</b></a></td>
                 </tr>
@@ -175,8 +175,8 @@
         </td>
     </tr>
     <tr>
-        <td width="50%" align="center" bgcolor="{{$result_contents['C']["color"]}}" @if($my_type=='C') class="shadow-lg blinking" @endif>
-            <table width="70%" @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}"@endif style="margin-bottom:1em">
+        <td align="center" bgcolor="{{$result_contents['C']["color"]}}" @if($my_type=='C') class="width:50%;shadow-lg blinking" @endif>
+            <table @if($my_type=='C') bgcolor="{{$result_contents['C']["color"]}}"@endif style="width:70%;margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-right rc-block">{{$results["C"]}}</td>
                 </tr>
@@ -185,8 +185,8 @@
                 </tr>
             </table>
         </td>
-        <td width="50%" align="center"  bgcolor="{{$result_contents['D']["color"]}}" @if($my_type=='D') class="shadow-lg blinking" @endif>
-            <table width="70%" @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}"@endif style="margin-bottom:1em">
+        <td align="center"  bgcolor="{{$result_contents['D']["color"]}}" @if($my_type=='D') class="width:50%;shadow-lg blinking" @endif>
+            <table @if($my_type=='D') bgcolor="{{$result_contents['D']["color"]}}"@endif style="width:70%;margin-bottom:1em">
                 <tr>
                     <td style="padding:0 1em" class="text-left rc-block">{{$results["D"]}}</td>
                 </tr>
@@ -198,7 +198,7 @@
     </tr>
 </table>
         </td>
-        <td width="10%" class="rc-block @php if(in_array($my_type,array('B','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
+        <td class="rc-block @php if(in_array($my_type,array('B','D'))) echo 'blinking' @endphp" style="width:10%;vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical"><b>主張する</b>傾向</span></td>
     </tr>
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('C','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>表現・主張</b>する傾向</td>
@@ -220,7 +220,7 @@
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
                         @if($key==$my_type)あなたのタイプ<br /><br />@endif
                         {{$result_contents[$key]["type"]}} / {{$result_contents[$key]["name"]}} / {{$result_contents[$key]["kana"]}}<br /><br />の特徴（傾向）は
-                </h2>
+                </h3>
             </div>
 
             <div class="card-body float-none" style="background-color1:{{$result_contents[$key]["color"]}}">
