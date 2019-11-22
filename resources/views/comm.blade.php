@@ -39,7 +39,7 @@
                 <h2 class="text-center align-middle card-mark" style="margin-bottom:0;line-height:2em;">「{{$result_contents[$comm_type]['type']}} / {{$result_contents[$comm_type]["name"]}} / {{$result_contents[$comm_type]["kana"]}}」を<br />相手とした際のコミュニケーションの注意点</h2>
             </div>
             <div class="card-body" style1="background-color:{{$result_contents[$comm_type]["color"]}};">
-{!!$result_contents[$my_type]["communication"]!!}
+{!!$result_contents[$comm_type]["communication"]!!}
             </div>
         </div>
     </div>
