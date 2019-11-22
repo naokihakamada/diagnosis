@@ -198,7 +198,7 @@
     </tr>
 </table>
         </td>
-        <td class="rc-block @php if(in_array($my_type,array('B','D'))) echo 'blinking' @endphp" style="width:10%;vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" style="white-space:nowrap;display:block;"><b>主張する</b>傾向</span></td>
+        <td class="rc-block @php if(in_array($my_type,array('B','D'))) echo 'blinking' @endphp" style="width:10%;vertical-align: middle;text-align:center;background-color:#c6c6c6"><span class="vertical" style="white-space:nowrap;"><b>主張する</b>傾向</span></td>
     </tr>
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('C','D'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>表現・主張</b>する傾向</td>
