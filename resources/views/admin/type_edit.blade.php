@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>&nbsp;
-                    <a class="btn btn-outline-primary " href="{{{route('admin_types', ["title_id"=>$title->id])}}}">タイプへ</a>
+                    <a class="btn btn-outline-primary " href="{{{route('admin_types', ["title_id"=>$title_id])}}}">タイプへ</a>
 <br /><hr />
 <form action="" method="POST">
     @csrf
