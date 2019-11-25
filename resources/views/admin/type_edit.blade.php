@@ -56,7 +56,9 @@
                     </tr>
                 </table>
                 </form>
-                    <hr />
+                <a class="btn btn-outline-primary " href="{{route('admin_titles')}}">診断タイトルへ</a>&nbsp;
+                <a class="btn btn-outline-primary " href="{{{route('admin_types', ["title_id"=>$title_id])}}}">タイプへ</a>
+                <hr />
                     <a class="btn btn-outline-primary " href="{{route('admin_')}}">メニューへ</a>
                 </div>
                 
