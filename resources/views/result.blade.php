@@ -11,7 +11,7 @@
             @endif
         }
 </script>
-    
+
 <div class="container">
 
                     @if (session('status'))
@@ -35,14 +35,14 @@
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">お名前</label>
                 <div class="col-md-4">
-                        <input id="name" name="name" type="text" placeholder="例) 東京　花子" autocomplete="name" size="30" required>
+                        <input id="name" name="name" type="text" placeholder="例) 東京　花子" autocomplete="name" size="30" >
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">メールアドレス</label>
                 <div class="col-md-4">
-                        <input id="email" name="email" type="email" placeholder="例) taro@hanako.com" autocomplete="email" size="30" required>
+                        <input id="email" name="email" type="email" placeholder="例) taro@hanako.com" autocomplete="email" size="30" >
                 </div>
             </div>
 
@@ -142,7 +142,7 @@
     <div class="col-md-12">
         <div class="ss-card card shadow">
             <div class="card-body float-none" style="padding:0;">
-    
+
 <table class="table table-bordered" style="width:100%;height:100%;margin-bottom:0">
     <tr>
         <td colspan="3" class="rc-block @php if(in_array($my_type,array('A','B'))) echo 'blinking' @endphp" style="vertical-align: middle;text-align:center;background-color:#c6c6c6">感情を<b>抑制・コントール</b>する傾向</td>
@@ -215,7 +215,7 @@
     <div class="col-md-12">
         <div class="ss-card card shadow">
             <a id="type{{$key}}"></a>
-        
+
             <div class="ss-card-header" style="background-color:{{$result_contents[$key]["color"]}};color:black;">
                 <h3 class="text-center align-middle" style="margin-bottom:0;">
                         @if($key==$my_type)あなたのタイプ<br /><br />@endif

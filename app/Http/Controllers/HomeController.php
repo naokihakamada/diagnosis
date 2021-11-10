@@ -235,6 +235,11 @@ class HomeController extends Controller
             $result_contents[$s['style']] = $s;
         }
 
+        //nameがない場合には「ゲスト」
+        if (trim($urec["name"])=="") {
+            $urec["name"] = "ゲスト";
+        }
+
         //$titles = DiagnosisTitle::all();
         return view('result', [
             "title_id"=>$id,
@@ -263,6 +268,10 @@ class HomeController extends Controller
         }
         //保存
         $urec->name = $req->input('name');
+        //nameがない場合には「ゲスト」
+        if (trim($urec->name)=="") {
+            $urec->name = "ゲスト";
+        }
         $urec->email = $req->input('email');
         $urec->p4 = Carbon::now();
         //access_id
@@ -280,9 +289,11 @@ class HomeController extends Controller
         }
 
         //メール送信
-        Mail::to($urec->email)->send(new SendAccessID($urec, $result_contents));
-        if (Mail::failures()) {
-            dd(Mail);
+        if ($urec->email) {
+            Mail::to($urec->email)->send(new SendAccessID($urec, $result_contents));
+            if (Mail::failures()) {
+                dd(Mail);
+            }
         }
 
         //アクセスidへリダイレクト
@@ -395,7 +406,7 @@ class HomeController extends Controller
             setcookie('answers', "", time()-60);
             setcookie('diagnosis', "", time()-60);
             setcookie('user_result_id', "", time()-60);
-        
+
             return view("data_cleaned");
             return redirect()->route('index');
         }
